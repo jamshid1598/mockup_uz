@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+  {% block title %} <title>muckup.uz</title> {% endblock title %}
+
+  {% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style type="text/css"></style>
+  {% endblock css %}    
+
+  {% block body %}
+      <section class="container pl-0 pr-0 border-bottom">
+        <div class="row p-2 p-lg-5 px-lg-5">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h5 class="pt-3 pt-lg-1 pt-xl-1"> Plastic Cosmetic Jar Mockup Opened</h5>
+          <img src="{% static 'img/bg2.png' %}" class="mt-2" width="100%">
+          <img src="{% static 'img/bg2.png' %}" class="mt-2" width="100%">
+          <img src="{% static 'img/bg2.png' %}" class="mt-2" width="100%">
+          </div>
+          
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
+            <div id="wrap">
+              <a href="#" class="btn-slide2">
+                <span class="circle2 text-center"><i class="fa fa-download"></i></span>
+                <span class="title2">Yuklab olish</span>
+                <span class="title-hover2">Yuklab olish</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pt-4">
+            <h5>Tavsif</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pt-4">
+            <h5>Teglar</h5>
+            <div class="form-inline">
+              <button class="btn btn-sm btn-success pl-2 pr-2 mr-2">log <span>&times;</span></button>
+              <button class="btn btn-sm btn-success pl-2 pr-2 mr-2">mashinalar <span>&times;</span></button>
+              <button class="btn btn-sm btn-success pl-2 pr-2 mr-2">jihozlar <span>&times;</span></button>
+            </div>
+          </div>	
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4">
+            <div class="row">
+              <h5 class="pl-3">Tavsilotlar</h5>				
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row">
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl xajmi <br> <span><i class="fa fa-arrows-alt"></i> 123 MB</span></div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl turi <br> <span><i class="fa fa-file"></i> PSD, </span></div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">O'lchami <br><span><i class="fa fa-arrows-alt"></i> 5000x3333 px</span></div>              
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Yuklanganlar <br><span><i class="fa fa-download"></i> 123</span></div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Ko'rilganlar <br><span><i class="fa fa-eye"></i> 5000</span></div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Joylangan vaqti <br><span><i class="fa fa-calendar"></i> 18.01.2021</span></div>
+                </div>					
+              </div>
+              <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"></div>
+            </div>
+          </div>	
+          
+        </div>
+      </section>
+
+
+      <section class="container pl-0 pr-0">
+        <div class="row p-3 p-lg-5 px-lg-5">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h5 class="font-weight-bold">Tavsiya etilayotgan mahsulotlar</h5>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
+            <div class="card">
+              <img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
+              <h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
+              <h6 class="text-success pl-3">free</h6>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
+            <div class="card">
+              <img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
+              <h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
+              <h6 class="text-success pl-3">free</h6>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
+            <div class="card">
+              <img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
+              <h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
+              <h6 class="text-success pl-3">free</h6>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
+            <div class="card">
+              <img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
+              <h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
+              <h6 class="text-success pl-3">free</h6>
+            </div>
+          </div>
+        </div>
+      </section> 
+  {% endblock body %} 
+
+
+
+  {% block js %} 
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fakeLoader.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  {% endblock js %}
+

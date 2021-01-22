@@ -1,0 +1,51 @@
+{% load static %}
+
+<footer class="container-fluid pt-5 pb-5 bg-light">
+    <div class="container">
+        <div class="row">
+     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+        <a href="#!"><img src="{% static 'img/logo.svg' %}" width="200"></a>
+       <ul class="list-unstyled pl-5 pt-3">
+         <li>Asosiy</li>
+         <li>Biz haqimizda</li>
+         <li>Muckup</li>
+       </ul>
+     </div>
+     <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+      <h5 class="font-weight-bold">Foydali hovolalar</h5>
+        <div class="form-inline">
+        <ul class="list-unstyled pl-5 pt-2">
+         <li>Logo</li>
+         <li>Fudbolkalar</li>
+         <li>Buyumlar</li>
+         <li>Avtomobillar</li>
+         <li>Qiziqarli</li>
+       </ul> 
+       <ul class="list-unstyled pl-5 pt-2">
+         <li>Logo</li>
+         <li>Fudbolkalar</li>
+         <li>Buyumlar</li>
+         <li>Avtomobillar</li>
+         <li>Qiziqarli</li>
+       </ul>
+        </div>
+     </div>
+     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4"> 
+     <h5 class="font-weight-bold">Biz ijtimoiy tarmoqlarda</h5>       
+       <ul class="list-unstyled pl-5 pt-2 socialIcon">
+          <span class="telegram"><i class="fa fa-telegram  mr-2"></i></span>
+          <span class="instagram"><i class="fa fa-instagram  mr-2"></i></span>
+       </ul>
+     </div>
+  </div>
+  <div class="row border-top pt-3">
+     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        {% now 'Y' as year %}
+        ©{{ year }} Barcha huquqlar himoyalangan.
+      </div>
+     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
+        Sayt MYWEB.UZ studiyasida ishlab chiqilgan.
+      </div>
+  </div>
+    </div>
+</footer>

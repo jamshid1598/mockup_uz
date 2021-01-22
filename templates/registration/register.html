@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+  
+  
+{% block title %} <title>muckup.uz</title> {% endblock title %}
+
+  {% block css %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style type="text/css"></style>
+  {% endblock css %}
+
+  {% block body %}
+    <section class="container-fluid pt-5 pb-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-lg-8 col-xl-6 border p-5">
+            <div class="row">
+              <div class="col text-center title">
+                <h1 class="text-dark">Регистрация</h1>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <input type="text" class="form-control" placeholder="Полное имя">
+              </div>
+            </div>
+            <div class="row align-items-center mt-4">
+              <div class="col">
+                <input type="email" class="form-control" placeholder="Эл. адрес">
+              </div>
+            </div>
+              <div class="row align-items-center mt-4">
+              <div class="col">
+                <input type="number" class="form-control" placeholder="Телефонный номер">
+              </div>
+            </div>
+            <div class="row align-items-center mt-4">
+              <div class="col">
+                <input type="password" class="form-control" placeholder="Пароль">
+              </div>
+              <div class="col">
+                <input type="password" class="form-control" placeholder="Подтвердите Пароль">
+              </div>
+            </div>
+            <div class="row justify-content-start mt-4 pb-4">
+              <div class="col">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    Настоящим я соглашаюсь соблюдать <a href="#!" class="text-dark">Условия.</a>
+                  </label>
+                </div>
+
+                <button class="btn mt-4 w-100 register_btn">Регистрация</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endblock body %}
+
+  {% block js %} 
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fakeLoader.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  {% endblock js %}
