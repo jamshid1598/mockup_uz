@@ -32,8 +32,19 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
+class ImageAdminTabularInline(admin.TabularInline):
+    model   = Image
+    min_num = 1
+
+class MockUpTabularInline(admin.TabularInline):
+    model   = MockUp
+    min_num = 1
+
 class ProductAdmin(admin.ModelAdmin):
     # ('category', 'name', 'slug', 'description', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed', 'liked', 'tags', )
+
+    inlines = [ImageAdminTabularInline, MockUpTabularInline,]
+
     list_display = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed',)
     list_display_links = ('name', 'downloaded', 'viewed')
     ordering = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed', 'tags')
@@ -67,3 +78,26 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('tag',)
+    list_display_links = ('tag',)
+    ordering = ('category', 'tag',)
+    search_fields = ('category', 'tag',)
+    # list_editable = ('category',)
+
+    fieldsets = (
+        ('Category', {
+            'fields': (
+                'category',
+            )
+        }),
+        ('Tags', {
+            "fields": (
+                'tag',
+            ),
+        }),
+    )
+
+admin.site.register(Tag, TagAdmin)
