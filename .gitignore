@@ -108,6 +108,8 @@ celerybeat.pid
 env/
 venv/
 ENV/
+media_root/
+static_root/
 env.bak/
 venv.bak/
 
