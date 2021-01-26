@@ -25,12 +25,15 @@ class Tag(models.Model):
     category = models.ManyToManyField(Category, verbose_name="Category")
     tag = models.CharField(max_length=50, verbose_name="Tag Name")
 
+    def __str__(self):
+        return self.tag
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.SET_NULL, related_name='product_category', verbose_name="Category")
 
     name = models.CharField(max_length=200, verbose_name="Name")
-    slug = models.SlugField(max_length=300, verbose_name="Slug")
+    slug = models.SlugField(max_length=300, unique=True, verbose_name="Slug")
     description = models.TextField(verbose_name="Description")
     price = models.FloatField(blank=True, null=True, validators=(MinValueValidator(0), MaxValueValidator(100000000)), verbose_name="Price")
     discount = models.FloatField(blank=True, null=True, validators=(MinValueValidator(0), MaxValueValidator(100000000)), verbose_name="Discount")
@@ -43,8 +46,24 @@ class Product(models.Model):
     liked = models.ManyToManyField(User, related_name="user_likes",)
     tags = models.ManyToManyField(Tag, related_name="product_tags", verbose_name="Product Tags")
 
+    published_at = models.DateTimeField(auto_now_add=True)
+    updated_at   = models.DateTimeField(auto_now=True)
+
     def __str_(self):
         return self.name + " | " + self.category.name
+
+    def get_absolute_url(self):
+        return reverse("core:detail", kwargs={"slug": self.slug})
+    
+
+    @property
+    def date(self):
+        if self.published_at == self.updated_at:
+            date = self.published_at
+        else:
+            date = self.updated_at
+        return date
+
 
 class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_image", verbose_name="Product")
@@ -53,7 +72,16 @@ class Image(models.Model):
     caption = models.CharField(max_length=300, blank=True, null=True, verbose_name="Caption")
 
     def __str__(self):
-        return "image pk: "+(self.pk)+self.product.name
+        return "image pk: "+str(self.pk)+self.product.name
+    
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url=''
+        return url        
+
 
 class MockUp(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_file", verbose_name="Product")
