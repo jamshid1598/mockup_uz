@@ -1,6 +1,38 @@
 from django.shortcuts import render
+from django.views.generic import (
+    ListView,
+    DetailView,
+    UpdateView,
+    CreateView,
+    DeleteView,
+)
 
+
+from product.models import (
+    Category,
+    Product,
+    MockUp,
+    Image,
+    Tag,
+)
 # Create your views here.
+
+
+
+class HomeView(ListView):
+    model = Product
+    template_name = "index.html"
+    puginate_by = 18
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context
+
+
+
+
+
+
 
 
 
