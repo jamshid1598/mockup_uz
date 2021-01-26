@@ -1,223 +1,167 @@
 {% extends "base.html" %}
 {% load static %}
 
-  {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	{% block css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+		<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-    <style type="text/css"></style>  
-  {% endblock css %}
+		<style type="text/css"></style>  
+	{% endblock css %}
 
-  {% block title %}
-    <title>muckup.uz</title>
-  {% endblock title %}
+	{% block title %}
+		<title>muckup.uz</title>
+	{% endblock title %}
 
-  {% block body %}
-  <section class="container-fluid pl-0 pr-0 headerImgBlog"></section>
+	{% block body %}
+	<section class="container-fluid pl-0 pr-0 headerImgBlog"></section>
 
-  <section class="container pl-0 pr-0 searchSection pt-5 pb-5">
-        <div class="container">
-              <div class="search pl-5">
-                <input type="text"placeholder="Izlash ....">
-                <div class="button-src pt-3 ">
-                    <span class="btn pr-4"><i class="fa fa-search"></i></span>
-                </div>
-              </div>
-          </div>
-  </section>
-
-
-  <section class="container p-3 p-lg-0 p-xl-0 text-center">
-    <div class="row pb-2 ">
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-            <div class="profile-card card shadow-lg border-0">
-                <div class="profile-img">
-                    <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/>
-                </div>
-                    <h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-                    <h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
-                <div class="profile-content">
-                     <ul class="social-link">
-                        <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                        <a href="{% url 'core:detail' %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-                        <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-            <div class="profile-card card shadow-lg border-0">
-                <div class="profile-img">
-                    <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/>
-                </div>
-                    <h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-                    <h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
-                <div class="profile-content">
-                     <ul class="social-link">
-                        <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                        <a href="{% url 'core:detail' %}" class="text-white"><i class="fa fa-eye fa-2x mr-2"></i></a>
-                        <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-            <div class="profile-card card shadow-lg border-0">
-                <div class="profile-img">
-                    <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/>
-                </div>
-                    <h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-                    <h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
-                <div class="profile-content">
-                     <ul class="social-link">
-                        <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                        <a href="{% url 'core:detail' %}" class="text-white"><i class="fa fa-eye fa-2x mr-2"></i></a>
-                        <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-            <div class="profile-card card shadow-lg border-0">
-                <div class="profile-img">
-                    <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/>
-                </div>
-                    <h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-                    <h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
-                <div class="profile-content">
-                     <ul class="social-link">
-                        <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                        <a href="{% url 'core:detail' %}" class="text-white"><i class="fa fa-eye fa-2x mr-2"></i></a>
-                        <a href="#!" class="text-white"><i class="fa fa-heart fa-2x"></i></a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-            <div class="profile-card card shadow-lg border-0">
-                <div class="profile-img">
-                    <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/>
-                </div>
-                    <h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-                    <h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
-                <div class="profile-content">
-                     <ul class="social-link">
-                        <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                        <a href="{% url 'core:detail' %}" class="text-white"><i class="fa fa-eye fa-2x mr-2"></i></a>
-                        <a href="#!" class="text-white"><i class="fa fa-heart fa-2x"></i></a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-            <div class="profile-card card shadow-lg border-0">
-                <div class="profile-img">
-                    <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/>
-                </div>
-                    <h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-                    <h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
-                <div class="profile-content">
-                     <ul class="social-link">
-                        <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                        <a href="{% url 'core:detail' %}" class="text-white"><i class="fa fa-eye fa-2x mr-2"></i></a>
-                        <a href="#!" class="text-white"><i class="fa fa-heart fa-2x"></i></a>
-                    </ul>
-            </div>
-        </div>
-
-    </div>
-</section> 
-  <section class="container">
-        <div class="row text-center">
-          <nav class="m-auto" aria-label="Page navigation example">
-            <ul class="pagination pagination-lg">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>    
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-              </li>
-            </ul>
-          </nav>
-      </div>
-  </section>
-
-  <section class="container-fluid bg-light pl-3 pr-3 pt-5 pb-5">
-    <div class="container p-3">
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <h4 class="font-weight-bold">Eng ko'p ko'rilganlar</h4>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-            <div class="card border-0  bg-transparent">          
-            <img src="{% static 'img/productsFree/3.' %}png" alt="Team Image"/ width="100%" height="200">
-            <a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-            <div class="card border-0  bg-transparent">          
-            <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
-            <a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-            <div class="card border-0  bg-transparent">          
-            <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
-            <a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-            </div>
-          </div>
-          <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-            <div class="card border-0  bg-transparent">          
-            <img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
-            <a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-            </div>
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container p-5 mt-5 mb-5 sectionBlogImg">
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0 p-sm-1 p-md-2 p-lg-5 px-lg-5">
-            <h3>Barchasini birdaniga oling!</h3>
-            <h5>Plus Lifetime yordamida siz bizning barcha mahsulotlarimizga <br> va boshqa ko'p narsalarga abadiy kirishingiz mumkin.</h5>
-            <button class="btn btn-outline-secondary">Buyurtma bermoq</button>        
-        </div>
-    </div>
-  </section>
+	<section class="container pl-0 pr-0 searchSection pt-5 pb-5">
+				<div class="container">
+							<div class="search pl-5">
+								<input type="text"placeholder="Izlash ....">
+								<div class="button-src pt-3 ">
+										<span class="btn pr-4"><i class="fa fa-search"></i></span>
+								</div>
+							</div>
+					</div>
+	</section>
 
 
-  <!-- <div class="fakeLoader"></div> -->
-  <button class="btn btn-outline-danger btn-top" title="ScrollTop"><i class="fa fa-angle-up"></i></button>
-    
-  {% endblock body %}
+	<section class="container p-3 p-lg-0 p-xl-0 text-center">
+		<div class="row pb-2 ">
 
-  {% block js %}
-    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/fakeLoader.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-    <script>
-      
-      // heartBtn
-        var heartBtn1 = document.querySelector('.heartBtn');
+			{% for obj in object_list %}
+				<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
+					<div class="profile-card card shadow-lg border-0">
+						<div class="profile-img">
+							{% for image in obj.product_image.all %}
+								{% if forloop.counter == 1 %}
+									<img src="{{ image.imageURL }}" alt="Team Image"/>
+								{% endif %}
+							{% endfor %}
+						</div>
+						<!-- Price -->
+						{% if obj.free %}
+							<h6 class="p-3  font-weight-bold text-success text-left">free</h6>
+						{% elif obj.discount %}
+							<small><del>{{ obj.price }}</del></small>
+							<h6 class="p-3  font-weight-bold text-success text-left">{{ obj.discount }}</h6>
+						{% elif obj.price %}
+							<h6 class="p-3  font-weight-bold text-success text-left">{{ obj.price }}</h6>
+						{% else %}
+							<h6 class="p-3  font-weight-bold text-success text-left">free</h6>
+						{% endif %}
+						<!-- End Price -->
+						<h5 class="card-title pl-3 pr-3 pb-2">{{ obj.name }}</h5>
+						<div class="profile-content">
+							<ul class="social-link">
+								<a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+								<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+								<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			{% empty %}
+				<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
+					<div class="profile-card card shadow-lg border-0">
+						<h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section> 
+	<section class="container">
+				<div class="row text-center">
+					<nav class="m-auto" aria-label="Page navigation example">
+						<ul class="pagination pagination-lg">
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>    
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+							</li>
+						</ul>
+					</nav>
+			</div>
+	</section>
 
-    heartBtn1.addEventListener('click', function (){ 
-    // $(".heartBtn").removeClass('text-white');
-    // $(".heartBtn").addClass('text-danger');
-    console.log("sava");
-    });
+	<section class="container-fluid bg-light pl-3 pr-3 pt-5 pb-5">
+		<div class="container p-3">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<h4 class="font-weight-bold">Eng ko'p ko'rilganlar</h4>
+				</div>
+			</div>
+			<div class="row">
+					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
+						<div class="card border-0  bg-transparent">          
+						<img src="{% static 'img/productsFree/3.' %}png" alt="Team Image"/ width="100%" height="200">
+						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
+						<div class="card border-0  bg-transparent">          
+						<img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
+						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
+						<div class="card border-0  bg-transparent">          
+						<img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
+						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
+						<div class="card border-0  bg-transparent">          
+						<img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
+						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
+						</div>
+					</div>
+			</div>
+		</div>
+	</section>
 
-    </script>
-  {% endblock js %}
+	<section class="container p-5 mt-5 mb-5 sectionBlogImg">
+		<div class="row">
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0 p-sm-1 p-md-2 p-lg-5 px-lg-5">
+						<h3>Barchasini birdaniga oling!</h3>
+						<h5>Plus Lifetime yordamida siz bizning barcha mahsulotlarimizga <br> va boshqa ko'p narsalarga abadiy kirishingiz mumkin.</h5>
+						<button class="btn btn-outline-secondary">Buyurtma bermoq</button>        
+				</div>
+		</div>
+	</section>
+
+
+	<!-- <div class="fakeLoader"></div> -->
+	<button class="btn btn-outline-danger btn-top" title="ScrollTop"><i class="fa fa-angle-up"></i></button>
+		
+	{% endblock body %}
+
+	{% block js %}
+		<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+		<script src="{% static 'js/fakeLoader.min.js' %}"></script>
+		<script src="{% static 'js/script.js' %}"></script>
+		<script>
+			
+			// heartBtn
+				var heartBtn1 = document.querySelector('.heartBtn');
+
+		heartBtn1.addEventListener('click', function (){ 
+		// $(".heartBtn").removeClass('text-white');
+		// $(".heartBtn").addClass('text-danger');
+		console.log("sava");
+		});
+
+		</script>
+	{% endblock js %}
 
 
 

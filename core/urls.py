@@ -1,5 +1,9 @@
 from django.urls import path
 from .views import (
+    HomeView,
+    MockUpDetailView,
+
+
     home,
     mockup,
     detail,
@@ -8,8 +12,8 @@ from .views import (
 app_name = "core"
 
 urlpatterns = [
-    path('', home, name="home"),
-    path("mockups-collect/", mockup, name="mockup"),
-    path("detail/", detail, name="detail"),
+    path('', HomeView.as_view(), name="home"),
+    path("detail/<slug:slug>/", MockUpDetailView.as_view(), name="detail"),
+        path("mockups-collect/", mockup, name="mockup"),
     path("about-us/", aboutus, name="aboutus"),    
 ]
