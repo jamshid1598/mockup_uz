@@ -22,7 +22,7 @@ from product.models import (
 class HomeView(ListView):
     model = Product
     template_name = "index.html"
-    paginate_by = 2
+    paginate_by = 18
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,6 +44,11 @@ class MockUpDetailView(DetailView):
         category_product = category.product_category.all().order_by('-downloaded', 'viewed')[:4]
         context['recomended_product'] = category_product
         return context
+    
+    def get_queryset(self):
+        
+        return super().get_queryset()
+    
 
 
 

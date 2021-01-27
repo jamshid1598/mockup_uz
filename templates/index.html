@@ -74,6 +74,7 @@
 			{% endfor %}
 		</div>
 	</section> 
+
 	<section class="container">
 		<div class="row text-center">
 			<nav class="m-auto" aria-label="Page navigation example">
@@ -102,37 +103,6 @@
 				</ul>
 			</nav>
 		</div>
-
-
-
-
-
-
-
-		<div class="pagination">
-			<span class="step-links">
-				{% if page_obj.has_previous %}
-					<a href="?page=1">&laquo; first</a>
-					<a href="?page={{ page_obj.previous_page_number }}">previous</a>
-				{% endif %}
-		
-				<span class="current">
-					Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-				</span>
-		
-				{% if page_obj.has_next %}
-					<a href="?page={{ page_obj.next_page_number }}">next</a>
-					<a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-				{% endif %}
-			</span>
-		</div>
-
-
-
-
-
-
-
 	</section>
 
 	<section class="container-fluid bg-light pl-3 pr-3 pt-5 pb-5">
@@ -183,7 +153,7 @@
 		<script src="{% static 'js/fakeLoader.min.js' %}"></script>
 		<script src="{% static 'js/script.js' %}"></script>
 		<script>
-			
+			events.preventDefault();
 			// heartBtn
 				var heartBtn1 = document.querySelector('.heartBtn');
 
