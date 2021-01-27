@@ -68,7 +68,7 @@
 			{% empty %}
 				<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
 					<div class="profile-card card shadow-lg border-0">
-						<h5 class="card-title pl-3 pr-3 pb-2">Neoprene Guard Face Mask Mockup</h5>
+						<h5 class="card-title pl-3 pr-3 pb-2">There is no available mockup ;)</h5>
 					</div>
 				</div>
 			{% endfor %}
@@ -100,30 +100,20 @@
 				</div>
 			</div>
 			<div class="row">
+				{% for obj in recomended_product %}
 					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-						<div class="card border-0  bg-transparent">          
-						<img src="{% static 'img/productsFree/3.' %}png" alt="Team Image"/ width="100%" height="200">
-						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
+						<div class="card border-0  bg-transparent">
+							<a href="{% url 'core:detail' obj.slug %}" class="text-dark pt-1">
+								{% for image in obj.product_image.all %}       
+									{% if forloop.counter == 1 %}	
+										<img src="{{ image.imageURL }}" alt="Team Image"/ width="100%" height="200">
+									{% endif %}
+								{% endfor %}
+								<small class="pt-2">{{ obj.name }}</small>
+							</a>
 						</div>
 					</div>
-					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-						<div class="card border-0  bg-transparent">          
-						<img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
-						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-						</div>
-					</div>
-					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-						<div class="card border-0  bg-transparent">          
-						<img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
-						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-						</div>
-					</div>
-					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-						<div class="card border-0  bg-transparent">          
-						<img src="{% static 'img/productsFree/3.png' %}" alt="Team Image"/ width="100%" height="200">
-						<a href="products.html" class="text-dark pt-1"><small class="pt-2">Neoprene Guard Face Mask Mockup</small></a>
-						</div>
-					</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>

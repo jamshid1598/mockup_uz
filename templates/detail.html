@@ -14,95 +14,104 @@
 	{% endblock css %}    
 
 	{% block body %}
-			<section class="container pl-0 pr-0 border-bottom">
-				<div class="row p-2 p-lg-5 px-lg-5">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-						<h5 class="pt-3 pt-lg-1 pt-xl-1">{{ object.name }}</h5>
-						{% for img in object.product_image.all %}
-							<img src="{{ img.imageURL }}" class="mt-2" width="100%">
-						{% endfor %}
-					</div>
-					
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
-						<div id="wrap">
-							<a href="#" class="btn-slide2">
+		<section class="container pl-0 pr-0 border-bottom">
+			<div class="row p-2 p-lg-5 px-lg-5">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<h5 class="pt-3 pt-lg-1 pt-xl-1">{{ object.name }}</h5>
+					{% for img in object.product_image.all %}
+						<img src="{{ img.imageURL }}" class="mt-2" width="100%">
+					{% endfor %}
+				</div>
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
+					<div id="wrap">
+						{% for file in object.product_file.all %}
+							<a href="{{ file.fileURL }}" class="btn-slide2">
 								<span class="circle2 text-center"><i class="fa fa-download"></i></span>
 								<span class="title2">Yuklab olish</span>
 								<span class="title-hover2">Yuklab olish</span>
 							</a>
-						</div>
-					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pt-4">
-						<h5>Tavsif</h5>
-						<p>{{ object.description|safe }}</p>
-					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pt-4">
-						<h5>Teglar</h5>
-						<div class="form-inline">
-							<!-- Tags -->
-							{{ object.tags }}
-							<!-- End Tags -->
-							<button class="btn btn-sm btn-success pl-2 pr-2 mr-2">log <span>&times;</span></button>
-							<button class="btn btn-sm btn-success pl-2 pr-2 mr-2">mashinalar <span>&times;</span></button>
-							<button class="btn btn-sm btn-success pl-2 pr-2 mr-2">jihozlar <span>&times;</span></button>
-						</div>
-					</div>	
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4">
-						<div class="row">
-							<h5 class="pl-3">Tavsilotlar</h5>				
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-								<div class="row">
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl xajmi <br> <span><i class="fa fa-arrows-alt"></i> 123 MB</span></div>
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl turi <br> <span><i class="fa fa-file"></i> PSD, </span></div>
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">O'lchami <br><span><i class="fa fa-arrows-alt"></i> 5000x3333 px</span></div>              
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Yuklanganlar <br><span><i class="fa fa-download"></i> 123</span></div>
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Ko'rilganlar <br><span><i class="fa fa-eye"></i> 5000</span></div>
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Joylangan vaqti <br><span><i class="fa fa-calendar"></i> 18.01.2021</span></div>
-								</div>					
-							</div>
-							<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"></div>
-						</div>
-					</div>	
-					
-				</div>
-			</section>
-
-
-			<section class="container pl-0 pr-0">
-				<div class="row p-3 p-lg-5 px-lg-5">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-						<h5 class="font-weight-bold">Tavsiya etilayotgan mahsulotlar</h5>
-					</div>
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
-						<div class="card">
-							<img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
-							<h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
-							<h6 class="text-success pl-3">free</h6>
-						</div>
-					</div>
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
-						<div class="card">
-							<img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
-							<h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
-							<h6 class="text-success pl-3">free</h6>
-						</div>
-					</div>
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
-						<div class="card">
-							<img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
-							<h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
-							<h6 class="text-success pl-3">free</h6>
-						</div>
-					</div>
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
-						<div class="card">
-							<img src="{% static 'img/productsFree/2.png' %}" width="100%" height="150">
-							<h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
-							<h6 class="text-success pl-3">free</h6>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
-			</section> 
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pt-4">
+					<h5>Tavsif</h5>
+					<p>{{ object.description|safe }}</p>
+				</div>
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pt-4">
+					<h5>Teglar</h5>
+					<div class="form-inline">
+						<!-- Tags -->
+						{% for tag in object.tags.all %}
+							<button class="btn btn-sm btn-success pl-2 pr-2 mr-2">{{ tag.tag }}<span>&times;</span></button>
+						{% endfor %}						
+						<!-- End Tags -->
+					</div>
+				</div>	
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4">
+					<div class="row">
+						<h5 class="pl-3">Tavsilotlar</h5>				
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+							<div class="row">
+								<!-- Product File Info -->
+								{% for file in object.product_file.all %}
+									{% if forloop.counter == 1 %}
+										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl xajmi <br> 
+											<span><i class="fa fa-arrows-alt"></i> {{ file.size }}</span>
+										</div>
+										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl turi <br> 
+											<span><i class="fa fa-file"></i> {{ file.extension }}</span>
+										</div>
+										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">O'lchami <br>
+											<span><i class="fa fa-arrows-alt"></i> {{ file.resolution }}</span>
+										</div>
+									{% endif %}
+								{% endfor %}              
+								<!-- End Product File Info -->
+								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Yuklanganlar <br><span><i class="fa fa-download"></i> {{ object.downloaded }}</span></div>
+								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Ko'rilganlar <br><span><i class="fa fa-eye"></i> {{ object.viewed }}</span></div>
+								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Joylangan vaqti <br><span><i class="fa fa-calendar"></i> {{ object.date|date:"d/m/Y" }}</span></div>
+							</div>					
+						</div>
+						<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3"></div>
+					</div>
+				</div>	
+			</div>
+		</section>
+
+
+		<section class="container pl-0 pr-0">
+			<div class="row p-3 p-lg-5 px-lg-5">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<h5 class="font-weight-bold">Tavsiya etilayotgan mahsulotlar</h5>
+				</div>
+				{% for obj in recomended_product %}
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3">
+						<div class="card">
+							<a href="{% url 'core:detail' obj.slug %}" class="text-dark pt-1">
+								{% for image in obj.product_image.all %}       
+									{% if forloop.counter == 1 %}	
+										<img src="{{ image.imageURL }}" width="100%" height="150">
+									{% endif %}
+								{% endfor %}
+								<h6 class="card-title p-2">Plastic Cosmetic Jar Mockup Opened</h6>
+							</a>
+							<!-- Price -->
+							{% if obj.free %}
+								<h6 class="text-success pl-3">free</h6>
+							{% elif obj.discount %}
+								<small><del>{{ obj.price }}</del></small>
+								<h6 class="text-success pl-3">{{ obj.discount }}</h6>
+							{% elif obj.price %}
+								<h6 class="text-success pl-3">{{ obj.price }}</h6>
+							{% else %}
+								<h6 class="text-success pl-3">free</h6>
+							{% endif %}
+							<!-- End Price -->
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section> 
 	{% endblock body %} 
 
 

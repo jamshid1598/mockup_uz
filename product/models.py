@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 from django.db import models
@@ -93,3 +94,10 @@ class MockUp(models.Model):
 
     def __str__(self):
         return "File pk: "+str(self.pk)+self.product.name
+    @property
+    def fileURL(self):
+        try:
+            url = self.file.url
+        except:
+            url=''
+        return url
