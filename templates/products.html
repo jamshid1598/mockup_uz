@@ -21,7 +21,7 @@
 						<ul class="list-unstyled">
 							<li class="font-weight-bold text-center h4">Kategoriyalar</li>
 							{% for category in categories %}
-								<li><a href="#!" class="text-dark">{{ category.name }}</a></li>
+								<li><a href="{% url 'core:mockup' category.slug %}" class="text-dark">{{ category.name }}</a></li>
 							{% endfor %}
 						</ul>
 					</div>
@@ -67,13 +67,25 @@
 							<nav class="m-auto" aria-label="Page navigation example">
 							<ul class="pagination pagination-lg">
 								<li class="page-item">
+									{% if page_obj.has_previous %}
+										<a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+									{% else %}
 									<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+									{% endif %}
 								</li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>    
+								{% for index in page_obj.paginator.page_range %}
+									{% if page_obj.number == index %}
+										<li class="page-item"><a class="page-link" style="background-color:rgb(209, 201, 201)" href="?page={{ index }}">{{ index }}</a></li>	
+									{% else %}
+										<li class="page-item"><a class="page-link" href="?page={{ index }}">{{ index }}</a></li>
+									{% endif %}
+								{% endfor %} 
 								<li class="page-item">
-									<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+									{% if page_obj.has_next %}
+										<a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+									{% else %}
+										<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+									{% endif %}
 								</li>
 							</ul>
 						</nav>

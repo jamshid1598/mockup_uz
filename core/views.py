@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.views.generic import (
     ListView,
     DetailView,
@@ -30,6 +31,8 @@ class HomeView(ListView):
         context['recomended_product'] = downloaded_viewed
         return context
 
+
+
 class MockUpDetailView(DetailView):
     model = Product
     template_name = "detail.html"
@@ -44,18 +47,12 @@ class MockUpDetailView(DetailView):
         category_product = category.product_category.all().order_by('-downloaded', 'viewed')[:4]
         context['recomended_product'] = category_product
         return context
-    
-    def get_queryset(self):
-        
-        return super().get_queryset()
-    
 
 
 
 class MockUpListView(ListView):
     model = Product
     template_name = 'products.html'
-
     paginate_by = 9
 
     def get_context_data(self, **kwargs):
@@ -65,7 +62,13 @@ class MockUpListView(ListView):
         context['recomended_product'] = downloaded_viewed
         return context
 
-
+    def get_queryset(self):
+        try:
+            slug = self.kwargs['slug']
+            category = get_object_or_404(Category, slug=slug)
+            return category.product_category.all()
+        except:
+            return Product.objects.all()
 
 
 
