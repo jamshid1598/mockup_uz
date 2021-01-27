@@ -22,7 +22,7 @@ from product.models import (
 class HomeView(ListView):
     model = Product
     template_name = "index.html"
-    puginate_by = 18
+    paginate_by = 2
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -51,7 +51,7 @@ class MockUpListView(ListView):
     model = Product
     template_name = 'products.html'
 
-    puginate_by = 9
+    paginate_by = 9
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
