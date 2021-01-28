@@ -32,6 +32,6 @@ function download_counter(slug){
 	   return response.json();
 	})
 	.then((data) => {
-		console.log(data)
+		console.log(data['success'])
 	});
 }
