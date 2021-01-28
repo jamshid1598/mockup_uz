@@ -30,6 +30,14 @@ class Tag(models.Model):
         return self.tag
 
 
+class UserViews(models.Model):
+    mockup = models.ForeignKey('Product', on_delete=models.CASCADE, related_name="product_views", verbose_name="Product")
+    visitor_ip = models.GenericIPAddressField(default='0.0.0.0')
+
+    def __str__(self):
+        return f"{self.visitor_ip} on {self.mockup.name}"
+
+
 class Product(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.SET_NULL, related_name='product_category', verbose_name="Category")
 
@@ -42,7 +50,7 @@ class Product(models.Model):
     free = models.BooleanField(default=False, verbose_name="Free") 
 
     downloaded = models.SmallIntegerField(default=0)
-    viewed = models.SmallIntegerField(default=0)
+    # viewed = models.SmallIntegerField(default=0)
 
     liked = models.ManyToManyField(User, related_name="user_likes",)
     tags = models.ManyToManyField(Tag, related_name="product_tags", verbose_name="Product Tags")
@@ -56,7 +64,6 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("core:detail", kwargs={"slug": self.slug})
     
-
     @property
     def date(self):
         if self.published_at == self.updated_at:
@@ -64,6 +71,10 @@ class Product(models.Model):
         else:
             date = self.updated_at
         return date
+
+    @property
+    def views_count(self):
+        return UserViews.objects.filter(mockup=self).count()
 
 
 class Image(models.Model):

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.db.models import TextField
 from tinymce.widgets import TinyMCE
 from .models import (
+    UserViews,
     Category,
     Product,
     MockUp,
@@ -45,10 +46,10 @@ class ProductAdmin(admin.ModelAdmin):
 
     inlines = [ImageAdminTabularInline, MockUpTabularInline,]
 
-    list_display = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed',)
-    list_display_links = ('name', 'downloaded', 'viewed')
-    ordering = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed', 'tags')
-    search_fields = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed', 'tags')
+    list_display = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', )
+    list_display_links = ('name', 'downloaded',)
+    ordering = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'tags')
+    search_fields = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'tags')
 
     list_editable = ('category', 'price', 'discount', 'paid', 'free', )
 
@@ -101,3 +102,5 @@ class TagAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Tag, TagAdmin)
+
+admin.site.register(UserViews)

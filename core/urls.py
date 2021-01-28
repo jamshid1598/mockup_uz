@@ -4,7 +4,8 @@ from .views import (
     MockUpDetailView,
     MockUpListView,
 
-    mockup,
+    download_counter,
+
     aboutus,
 )
 app_name = "core"
@@ -15,6 +16,8 @@ urlpatterns = [
     
     path("mockups-collect/", MockUpListView.as_view(), name="mockup"),
     path("mockups-collect/<slug:slug>", MockUpListView.as_view(), name="mockup"),
+
+    path('ajax/download_counter/', download_counter, name='download_counter'),
 
     path("about-us/", aboutus, name="aboutus"),    
 ]

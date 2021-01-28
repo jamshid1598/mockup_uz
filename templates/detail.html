@@ -25,7 +25,7 @@
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
 					<div id="wrap">
 						{% for file in object.product_file.all %}
-							<a href="{{ file.fileURL }}" class="btn-slide2">
+							<a href="{{ file.fileURL }}" onclick="core_method_js(this)" data-slug="{{ object.slug }}" class="btn-slide2">
 								<span class="circle2 text-center"><i class="fa fa-download"></i></span>
 								<span class="title2">Yuklab olish</span>
 								<span class="title-hover2">Yuklab olish</span>
@@ -68,7 +68,7 @@
 								{% endfor %}              
 								<!-- End Product File Info -->
 								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Yuklanganlar <br><span><i class="fa fa-download"></i> {{ object.downloaded }}</span></div>
-								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Ko'rilganlar <br><span><i class="fa fa-eye"></i> {{ object.viewed }}</span></div>
+								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Ko'rilganlar <br><span><i class="fa fa-eye"></i>{{ object.views_count }}</span></div>
 								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Joylangan vaqti <br><span><i class="fa fa-calendar"></i> {{ object.date|date:"d/m/Y" }}</span></div>
 							</div>					
 						</div>
