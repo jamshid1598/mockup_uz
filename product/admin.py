@@ -84,16 +84,11 @@ admin.site.register(Product, ProductAdmin)
 class TagAdmin(admin.ModelAdmin):
     list_display = ('tag',)
     list_display_links = ('tag',)
-    ordering = ('category', 'tag',)
-    search_fields = ('category', 'tag',)
+    ordering = ('tag',)
+    search_fields = ('tag',)
     # list_editable = ('category',)
 
     fieldsets = (
-        ('Category', {
-            'fields': (
-                'category',
-            )
-        }),
         ('Tags', {
             "fields": (
                 'tag',

@@ -54,17 +54,16 @@
 							<div class="row">
 								<!-- Product File Info -->
 								{% for file in object.product_file.all %}
-									{% if forloop.counter == 1 %}
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl xajmi <br> 
-											<span><i class="fa fa-arrows-alt"></i> {{ file.size }}</span>
-										</div>
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl turi <br> 
-											<span><i class="fa fa-file"></i> {{ file.extension }}</span>
-										</div>
-										<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">O'lchami <br>
-											<span><i class="fa fa-arrows-alt"></i> {{ file.resolution }}</span>
-										</div>
-									{% endif %}
+									<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl xajmi <br> 
+										<span><i class="fa fa-arrows-alt"></i> {{ file.file.size|filesizeformat }}</span>
+									</div>
+									<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Fayl turi <br> 
+										<span><i class="fa fa-file"></i> {{ file.get_extension }}</span>
+									</div>
+									<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">O'lchami <br>
+										<span><i class="fa fa-arrows-alt"></i> {{ file.resolution }}</span>
+									</div>
+									<br>
 								{% endfor %}              
 								<!-- End Product File Info -->
 								<div class="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-2 p-3 bg-light">Yuklanganlar <br><span><i class="fa fa-download"></i> {{ object.downloaded }}</span></div>
