@@ -70,12 +70,14 @@ INSTALLED_APPS = [
 
     'tinymce',
 
-    'accounts.apps.AccountsConfig',
+    # 'accounts.apps.AccountsConfig',
+    'user.apps.UserConfig',
     'product.apps.ProductConfig',
     'core.apps.CoreConfig',
 ]
 
-AUTH_USER_MODEL = 'accounts.NewUser'
+# AUTH_USER_MODEL = 'accounts.NewUser'
+AUTH_USER_MODEL = 'user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -137,6 +139,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Twillo authy key
+AUTHY_KEY = '1eba52ce038249a6ee2bbdcdabc55594'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -162,3 +167,7 @@ STATICFILES_DIRS = (BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_root/'
+
+# 6Z8PbBDfEhv4azTd1YlhGePvHN4N3dLl
+# Account Sid: ACef4c1bff5c2bb65c5edf53224dabab56
+# Auth Token: 1eba52ce038249a6ee2bbdcdabc55594

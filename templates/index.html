@@ -16,134 +16,138 @@
 	{% endblock title %}
 
 	{% block body %}
-	<section class="container-fluid pl-0 pr-0 headerImgBlog"></section>
+		<section class="container-fluid pl-0 pr-0 headerImgBlog"></section>
 
-	<section class="container pl-0 pr-0 searchSection pt-5 pb-5">
-				<div class="container">
-							<div class="search pl-5">
-								<input type="text"placeholder="Izlash ....">
-								<div class="button-src pt-3 ">
-										<span class="btn pr-4"><i class="fa fa-search"></i></span>
-								</div>
-							</div>
-					</div>
-	</section>
-
-
-	<section class="container p-3 p-lg-0 p-xl-0 text-center">
-		<div class="row pb-2 ">
-
-			{% for obj in object_list %}
-				<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-					<div class="profile-card card shadow-lg border-0">
-						<div class="profile-img">
-							{% for image in obj.product_image.all %}
-								{% if forloop.counter == 1 %}
-									<img src="{{ image.imageURL }}" alt="Team Image"/>
-								{% endif %}
-							{% endfor %}
+		<section class="container pl-0 pr-0 searchSection pt-5 pb-5">
+			<div class="container">
+				<div class="search pl-5">
+					<form action="" method="get">
+					
+						<input name='q' type="text" placeholder="Izlash ....">
+						<div class="button-src pt-3 ">
+							<button type="submit"><span class="btn pr-4"><i class="fa fa-search"></i></span></button>
 						</div>
-						<!-- Price -->
-						{% if obj.free %}
-							<h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-						{% elif obj.discount %}
-							<small><del>{{ obj.price }}</del></small>
-							<h6 class="p-3  font-weight-bold text-success text-left">{{ obj.discount }}</h6>
-						{% elif obj.price %}
-							<h6 class="p-3  font-weight-bold text-success text-left">{{ obj.price }}</h6>
-						{% else %}
-							<h6 class="p-3  font-weight-bold text-success text-left">free</h6>
-						{% endif %}
-						<!-- End Price -->
-						<h5 class="card-title pl-3 pr-3 pb-2">{{ obj.name }}</h5>
-						<div class="profile-content">
-							<ul class="social-link">
-								<a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-								<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-								<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
-							</ul>
-						</div>
-					</div>
-				</div>
-			{% empty %}
-				<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
-					<div class="profile-card card shadow-lg border-0">
-						<h5 class="card-title pl-3 pr-3 pb-2">There is no available mockup ;)</h5>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</section> 
-
-	<section class="container">
-		<div class="row text-center">
-			<nav class="m-auto" aria-label="Page navigation example">
-				<ul class="pagination pagination-lg">
-					<li class="page-item">
-						{% if page_obj.has_previous %}
-							<a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-						{% else %}
-						<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-						{% endif %}
-					</li>
-					{% for index in page_obj.paginator.page_range %}
-						{% if page_obj.number == index %}
-							<li class="page-item"><a class="page-link" style="background-color:rgb(209, 201, 201)" href="?page={{ index }}">{{ index }}</a></li>	
-						{% else %}
-							<li class="page-item"><a class="page-link" href="?page={{ index }}">{{ index }}</a></li>
-						{% endif %}
-					{% endfor %} 
-					<li class="page-item">
-						{% if page_obj.has_next %}
-							<a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-						{% else %}
-							<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-						{% endif %}
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</section>
-
-	<section class="container-fluid bg-light pl-3 pr-3 pt-5 pb-5">
-		<div class="container p-3">
-			<div class="row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-					<h4 class="font-weight-bold">Eng ko'p ko'rilganlar</h4>
+					</form>
 				</div>
 			</div>
-			<div class="row">
-				{% for obj in recomended_product %}
-					<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
-						<div class="card border-0  bg-transparent">
-							<a href="{% url 'core:detail' obj.slug %}" class="text-dark pt-1">
-								{% for image in obj.product_image.all %}       
-									{% if forloop.counter == 1 %}	
-										<img src="{{ image.imageURL }}" alt="Team Image"/ width="100%" height="200">
+		</section>
+
+
+		<section class="container p-3 p-lg-0 p-xl-0 text-center">
+			<div class="row pb-2 ">
+
+				{% for obj in object_list %}
+					<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
+						<div class="profile-card card shadow-lg border-0">
+							<div class="profile-img">
+								{% for image in obj.product_image.all %}
+									{% if forloop.counter == 1 %}
+										<img src="{{ image.imageURL }}" alt="Team Image"/>
 									{% endif %}
 								{% endfor %}
-								<small class="pt-2">{{ obj.name }}</small>
-							</a>
+							</div>
+							<!-- Price -->
+							{% if obj.free %}
+								<h6 class="p-3  font-weight-bold text-success text-left">free</h6>
+							{% elif obj.discount %}
+								<small><del>{{ obj.price }}</del></small>
+								<h6 class="p-3  font-weight-bold text-success text-left">{{ obj.discount }}</h6>
+							{% elif obj.price %}
+								<h6 class="p-3  font-weight-bold text-success text-left">{{ obj.price }}</h6>
+							{% else %}
+								<h6 class="p-3  font-weight-bold text-success text-left">free</h6>
+							{% endif %}
+							<!-- End Price -->
+							<h5 class="card-title pl-3 pr-3 pb-2">{{ obj.name }}</h5>
+							<div class="profile-content">
+								<ul class="social-link">
+									<a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+									<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+									<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+								</ul>
+							</div>
+						</div>
+					</div>
+				{% empty %}
+					<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 pb-4">
+						<div class="profile-card card shadow-lg border-0">
+							<h5 class="card-title pl-3 pr-3 pb-2">There is no available mockup ;)</h5>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
-		</div>
-	</section>
+		</section> 
 
-	<section class="container p-5 mt-5 mb-5 sectionBlogImg">
-		<div class="row">
-				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0 p-sm-1 p-md-2 p-lg-5 px-lg-5">
-						<h3>Barchasini birdaniga oling!</h3>
-						<h5>Plus Lifetime yordamida siz bizning barcha mahsulotlarimizga <br> va boshqa ko'p narsalarga abadiy kirishingiz mumkin.</h5>
-						<button class="btn btn-outline-secondary">Buyurtma bermoq</button>        
+		{% if page_obj.has_previous or page_obj.has_next %}
+			<section class="container">
+				<div class="row text-center">
+					<nav class="m-auto" aria-label="Page navigation example">
+						<ul class="pagination pagination-lg">
+							<li class="page-item">
+								{% if page_obj.has_previous %}
+									<a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								{% else %}
+								<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								{% endif %}
+							</li>
+							{% for index in page_obj.paginator.page_range %}
+								{% if page_obj.number == index %}
+									<li class="page-item"><a class="page-link" style="background-color:rgb(209, 201, 201)" href="?page={{ index }}">{{ index }}</a></li>	
+								{% else %}
+									<li class="page-item"><a class="page-link" href="?page={{ index }}">{{ index }}</a></li>
+								{% endif %}
+							{% endfor %} 
+							<li class="page-item">
+								{% if page_obj.has_next %}
+									<a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								{% else %}
+									<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								{% endif %}
+							</li>
+						</ul>
+					</nav>
 				</div>
-		</div>
-	</section>
+			</section>
+		{% endif %}
 
+		<section class="container-fluid bg-light pl-3 pr-3 pt-5 pb-5">
+			<div class="container p-3">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<h4 class="font-weight-bold">Eng ko'p ko'rilganlar</h4>
+					</div>
+				</div>
+				<div class="row">
+					{% for obj in recomended_product %}
+						<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 p-3  border">
+							<div class="card border-0  bg-transparent">
+								<a href="{% url 'core:detail' obj.slug %}" class="text-dark pt-1">
+									{% for image in obj.product_image.all %}       
+										{% if forloop.counter == 1 %}	
+											<img src="{{ image.imageURL }}" alt="Team Image"/ width="100%" height="200">
+										{% endif %}
+									{% endfor %}
+									<small class="pt-2">{{ obj.name }}</small>
+								</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
 
-	<!-- <div class="fakeLoader"></div> -->
-	<button class="btn btn-outline-danger btn-top" title="ScrollTop"><i class="fa fa-angle-up"></i></button>
+		<section class="container p-5 mt-5 mb-5 sectionBlogImg">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0 p-sm-1 p-md-2 p-lg-5 px-lg-5">
+					<h3>Barchasini birdaniga oling!</h3>
+					<h5>Plus Lifetime yordamida siz bizning barcha mahsulotlarimizga <br> va boshqa ko'p narsalarga abadiy kirishingiz mumkin.</h5>
+					<button class="btn btn-outline-secondary">Buyurtma bermoq</button>        
+				</div>
+			</div>
+		</section>
+
+		<!-- <div class="fakeLoader"></div> -->
+		<button class="btn btn-outline-danger btn-top" title="ScrollTop"><i class="fa fa-angle-up"></i></button>
 		
 	{% endblock body %}
 

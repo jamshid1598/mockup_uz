@@ -4,29 +4,29 @@
     <div class="container">
         <div class="row">
      <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-        <a href="#!"><img src="{% static 'img/logo.svg' %}" width="200"></a>
+        <a href="/"><img src="{% static 'img/logo.svg' %}" width="200"></a>
        <ul class="list-unstyled pl-5 pt-3">
-         <li>Asosiy</li>
-         <li>Biz haqimizda</li>
-         <li>Muckup</li>
+         <li><a href="/">Asosiy</a></li>
+         <li><a href="{% url 'core:aboutus' %}">Biz haqimizda</a></li>
+         <li><a href="{% url 'core:mockup' %}">Muckup</a></li>
        </ul>
      </div>
      <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
       <h5 class="font-weight-bold">Foydali hovolalar</h5>
         <div class="form-inline">
         <ul class="list-unstyled pl-5 pt-2">
-         <li>Logo</li>
-         <li>Fudbolkalar</li>
-         <li>Buyumlar</li>
-         <li>Avtomobillar</li>
-         <li>Qiziqarli</li>
+         <li><a href="">Logo</a></li>
+         <li><a href="">Fudbolkalar</a></li>
+         <li><a href="">Buyumlar</a></li>
+         <li><a href="">Avtomobillar</a></li>
+         <li><a href="">Qiziqarli</a></li>
        </ul> 
        <ul class="list-unstyled pl-5 pt-2">
-         <li>Logo</li>
-         <li>Fudbolkalar</li>
-         <li>Buyumlar</li>
-         <li>Avtomobillar</li>
-         <li>Qiziqarli</li>
+         <li><a href="">Logo</a></li>
+         <li><a href="">Fudbolkalar</a></li>
+         <li><a href="">Buyumlar</a></li>
+         <li><a href="">Avtomobillar</a></li>
+         <li><a href="">Qiziqarli</a></li>
        </ul>
         </div>
      </div>
@@ -44,7 +44,7 @@
         ©{{ year }} Barcha huquqlar himoyalangan.
       </div>
      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
-        Sayt MYWEB.UZ studiyasida ishlab chiqilgan.
+        Sayt <a href="https://www.myweb.uz/">MYWEB.UZ</a> studiyasida ishlab chiqilgan.
       </div>
   </div>
     </div>

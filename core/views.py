@@ -32,6 +32,14 @@ class HomeView(ListView):
 		downloaded_viewed = Product.objects.order_by("-downloaded",)[:4]
 		context['recomended_product'] = downloaded_viewed
 		return context
+	
+	def get_queryset(self):
+		qs = super().get_queryset()
+		try:
+			query = self.request.GET.get('q')
+			return qs.filter( Q(name__icontains=query) | Q(slug__icontains=query) | Q(description__icontains=query))
+		except :
+			return qs
 
 
 
