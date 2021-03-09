@@ -20,8 +20,6 @@ from product.models import (
 )
 # Create your views here.
 
-
-
 class HomeView(ListView):
 	model = Product
 	template_name = "index.html"
