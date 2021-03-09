@@ -3,3 +3,6 @@ Django: Validate file type ==> https://stackoverflow.com/questions/20272579/djan
                                https://pypi.org/project/django-upload-validator/
 
 Django Property ==> https://stackoverflow.com/questions/58558989/what-does-djangos-property-do
+
+
+django-2fa tutorial => https://www.codementor.io/@rishabh_ags/twilio-project-bl2kk9fwj

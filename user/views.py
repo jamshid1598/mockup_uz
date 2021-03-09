@@ -12,8 +12,8 @@ from .authy_api import send_verfication_code, verify_sent_code
 from .models import User
 
 
-# Create your views here.
-
+# class IndexView(TemplateView):
+#     template_name = 'index.html'
 
 
 class RegisterView(SuccessMessageMixin, FormView):
@@ -33,7 +33,7 @@ class RegisterView(SuccessMessageMixin, FormView):
             messages.add_message(self.request, messages.ERROR,
                                 'verification code not sent. \n'
                                 'Please re-register.')
-            return redirect('/register')
+            return redirect('account:signup')
         data = json.loads(response.text)
 
         print(response.status_code, response.reason)
@@ -42,7 +42,7 @@ class RegisterView(SuccessMessageMixin, FormView):
         if data['success'] == False:
             messages.add_message(self.request, messages.ERROR,
                             data['message'])
-            return redirect('/register')
+            return redirect('account:signup')
 
         else:
             kwargs = {'user': user}
@@ -51,7 +51,7 @@ class RegisterView(SuccessMessageMixin, FormView):
 
 
 def PhoneVerificationView(request, **kwargs):
-    template_name = 'phone_confirm.html'
+    template_name = 'registration/phone_confirm.html'
 
     if request.method == "POST":
         username = request.POST['username']
@@ -68,7 +68,7 @@ def PhoneVerificationView(request, **kwargs):
                 if user.phone_number_verified is False:
                     user.phone_number_verified = True
                     user.save()
-                return redirect('account/dashboard/')
+                return redirect('/dashboard')
             else:
                 messages.add_message(request, messages.ERROR,
                                 data['message'])
@@ -91,13 +91,14 @@ def PhoneVerificationView(request, **kwargs):
 class LoginView(FormView):
     template_name = 'registration/login.html'
     form_class = LoginForm
-    success_url = 'account/dashboard/'
+    # success_url = '/dashboard'
+    success_url = '/'
 
     def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             messages.add_message(self.request, messages.INFO,
                                 "User already logged in")
-            return redirect('account/dashboard/')
+            return redirect('/dashboard')
         else:
             return super().dispatch(request, *args, **kwargs)
 
@@ -106,7 +107,7 @@ class LoginView(FormView):
         print(user.two_factor_auth)
         if user.two_factor_auth is False:
             login(self.request, user)
-            return redirect('account/dashboard/')
+            return redirect('/dashboard')
         else:
             try:
                 response = send_verfication_code(user)
@@ -158,4 +159,3 @@ class DashboardView(SuccessMessageMixin, View):
             request.user.save()
 
         return render(self.request, self.template_name, {})
-

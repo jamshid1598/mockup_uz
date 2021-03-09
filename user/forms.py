@@ -11,13 +11,14 @@ class RegisterForm(forms.ModelForm):
     phone_number = forms.IntegerField(required=True)
     password1 = forms.CharField(widget=forms.PasswordInput())
     password2 = forms.CharField(widget=forms.PasswordInput())
-    # country_code = forms.IntegerField()
+    country_code = forms.IntegerField()
 
     MIN_LENGTH = 4
 
     class Meta:
         model = User
-        fields = ['username', 'phone_number', 'password1', 'password2', 'full_name' ] # 'country_code',
+        fields = ['username','country_code','phone_number', 'password1', 'password2',
+                  'full_name' ]
 
     def clean_username(self):
         username = self.data.get('username')
@@ -40,7 +41,7 @@ class RegisterForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         user = super(RegisterForm, self).save(*args, **kwargs)
         user.set_password(self.cleaned_data['password1'])
-        # print('Saving user with country_code', user.country_code)
+        print('Saving user with country_code', user.country_code)
         user.save()
         return user
 

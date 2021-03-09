@@ -16,13 +16,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number_verified = models.BooleanField(default=False)
     change_pw = models.BooleanField(default=True)
     phone_number = models.BigIntegerField(unique=True)
-    # country_code = models.IntegerField()
+    country_code = models.IntegerField()
     two_factor_auth = models.BooleanField(default=False)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['full_name', 'phone_number', ] # 'country_code'
+    REQUIRED_FIELDS = ['full_name', 'phone_number', 'country_code']
 
     class Meta:
         ordering = ('username',)
