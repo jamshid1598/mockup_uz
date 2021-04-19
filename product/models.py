@@ -1,4 +1,3 @@
-from django.db import models
 from django.urls import reverse
 
 # Create your models here.
@@ -18,8 +17,21 @@ class Category(models.Model):
     image = models.ImageField(upload_to="category-image/%d/%m/%Y/", blank=True, null=True, verbose_name="Image")
     caption = models.CharField(max_length=300, blank=True, null=True, verbose_name="Caption")
 
+    active = models.BooleanField(default=False, verbose_name='Active Category')
+
+    class Meta:
+        ordering = ['name', ]
+    
     def __str__(self):
         return self.name
+    
+    @property
+    def imageURL(self):
+        try:
+            url=self.image.url
+        except:
+            url=''
+        return url
     
 
 
@@ -41,6 +53,10 @@ class UserViews(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.SET_NULL, related_name='product_category', verbose_name="Category")
+
+    file       = models.FileField(upload_to="mockup-file/%d/%m/%Y/", null=True, verbose_name="MockUp File")
+    resolution = models.CharField(max_length=50, blank=True, null=True, verbose_name="Resolution")
+    extension  = models.CharField(max_length=10, blank=True, null=True, verbose_name="Extension")
 
     name        = models.CharField(max_length=200, verbose_name="Name")
     slug        = models.SlugField(max_length=300, unique=True, verbose_name="Slug")
@@ -65,6 +81,20 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("core:detail", kwargs = {"slug": self.slug})
     
+    @property
+    def fileURL(self):
+        try:
+            url = self.file.url
+        except:
+            url=''
+        return url
+    
+    @property
+    def get_extension(self):
+        import os
+        name, extension = os.path.splitext(self.file.name)
+        return extension
+
     @property
     def date(self):
         if self.published_at == self.updated_at:
@@ -118,3 +148,6 @@ class MockUp(models.Model):
         import os
         name, extension = os.path.splitext(self.file.name)
         return extension
+
+
+

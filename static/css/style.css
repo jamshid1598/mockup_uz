@@ -1,4 +1,11 @@
-
+@font-face {
+    font-family: "Sports World-Regular";
+    src: url("../css/Sports\ World-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat-Regular";
+    src: url("../Montserrat/Montserrat-Regular.ttf");
+  }
 *{
   margin: 0;
   padding: 0;
@@ -16,25 +23,38 @@ body{
   display: inherit;
 }
 
+.bestFont{
+    font-family: "AbrilFatface-Regular";
+}
+.bestFont2{
+    font-family: "Montserrat-Regular";
+}
 
 /*Scrol top*/
 .btn-top{
 	display: none;
 	position: fixed;
-	bottom: 20px;
+	bottom: 30px;
 	right: 40px;
 	z-index: 99;
 
 }
+.btn-top:hover{
+    background-color: red;
+}
 
+.backBlack::before{
+    content: '';
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+}
 
 
 /*                  HEADER                           */
-
-
 .headerImgBlog{
-    background-image: url(../img/bg1.png);
-    height: 32vh;
+    background-image: url(../img/ds.jpg);
+    background-size: cover;
+    height: 65vh;
     background-size: cover;
 }
 .socialIconHeader{
@@ -50,94 +70,88 @@ body{
   color: #000000;
 }
 
-
-
-.telegram:hover i{
- color: #0088cc;
+.heightH{
+    height: 125px;
+}
+.w170{
+    width: 170px;
+}
+.telegram i{
+   font-size: 35px;
+   color: #0088cc;
+}
+.youtube i{
+    font-size: 35px;
+    color: #cd201f;
+}
+.facebook i{
+    font-size: 35px;
+    color: #3b5999;
+}
+.instagram i{
+   font-size: 35px;  
+   color: #e4405f;
+}
+.loginColor{
+    color: #aaa;
 }
 
-.instagram:hover i{
-  color: #e4405f;
+.profile-card:hover .profile-img img
+{
+    transform: scale(1.27);
 }
-
-
-
-
-
-/*                   section                   */
-
-.profile-card{
-            position:relative;
-            overflow: hidden;
-        }
-        .profile-card:hover .profile-img img
-        {
-            transform: scale(1.27);
-        }
-        .profile-card .profile-img img{
-            width:100%;
-            height: 300px;
-            transition: transform 1s;
-        }
+.profile-card .profile-img img{
+    width:100%;
+    height: 100px;
+    transition: transform 1s;
+}
      
-        .profile-card .profile-content{
-            position: absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            padding:50% 4%;
-            text-align: center;
-           
-        }
-        .profile-card .profile-content:hover{
-            background-color: rgba(42, 43, 85, 0.2);
-        }
-      
-        .profile-card .profile-content .title > span{
-            display:block;
-            margin:5px 0;
-            font-size: 14px;
-            text-transform: capitalize;
-        }
-        .profile-card .profile-content .social-link{
-            margin: 0;
-            padding:0;
-            color: #ffffff;
-            opacity:0;
-            transform: translateY(100px);
-            transition:all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.20s;
-        }
-        .profile-card:hover .social-link{
-            opacity:1;
-            transform: translateY(0);
-        }
+.profile-card .profile-content{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width:100%;
+    height: 100%;
+    padding-top: 84%;
+    text-align: center;
+    overflow: hidden;
+    /* background-color: lightcoral; */
+}      
+.profile-card .profile-content .title > span{
+    display:block;
+    margin:5px 0;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.profile-card .profile-content .social-link{
+    margin: 0;
+    padding: 20px 0px 20px 0px;
+    color: #ffffff;
+    opacity:0;
+    transform: translateY(100px);
+    transition:all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.20s;
+    background-color: rgb(138, 138, 138);
+}
+.profile-card:hover .social-link{
+    opacity:1;
+    transform: translateY(0);
+}
 
-        .profile-card .profile-content .social-link li a{
-        	text-decoration: none;        	
-        }
-        .profile-card .profile-content .social-link li{
-            display: inline-block;
-            list-style: none;
-            margin:0 5px;
-        }
-        .profile-card .profile-content .social-link li a{
-            color:#333;
-            width:30px;
-            height:25px;
-            line-height:24px;
-            text-align: center;
-            border-radius:5px;
-            background-color: #fff;
-        }
-        
+.profile-card .profile-content .social-link li a{
+	text-decoration: none;        	
+}
 
-
-/**/
 .sectionBlogImg{
 	background-image: url(../img/bg2.png);
 	background-size: cover;
 	height: 50vh;
+}
+
+@media (max-width:992px) {
+    
+.collapse{
+    background-color: #eeeeee;    
+}
 }
 
 
@@ -152,7 +166,7 @@ body{
     }
     .search input{
         width: 100%;
-        height: 65px;
+        height: 40px;
         border: none;
         outline: none;
         font-size: 18px;
@@ -162,12 +176,12 @@ body{
     	font-size: 20px;
     }
     .button-src button{
-        padding: 10px 35px 10px 35px;
+        /* padding: 5px 20px 5px 20px; */
         border-radius: 50px;
         border: none;
-        margin: 9px 0px;
-        background-color: #f00;
-        color: #ffffff;
+        margin: 3px 0px;
+        background-color: #ddd;
+        color: #000;
         font-size: 18px;
         border: 0px solid transparent;
     }
@@ -308,12 +322,13 @@ footer .socialIcon i{
     text-decoration: none;
     
 }
+.sectionText1{
+    font-size: 35px;
 
-.headerLogo{
-    width: 500px;
 }
-
-
+.sectionText2{
+    font-size: 25px;
+}
 
 @media(max-width: 556px) {
     .headerLogo{
@@ -324,19 +339,89 @@ footer .socialIcon i{
 
 @media (max-width: 768px) {
     .headerLogo{
-    width: 200px;
-}
+        width: 200px;
+    }
+    .sectionText1{
+        font-size: 35px;
+
+    }
+    .sectionText2{
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 992px) {
     .headerLogo{
     width: 230px;
-}
+    }
 
+}
+@media (min-width:768px) and (max-width: 992px) {
+    .sectionText1{
+        font-size: 45px;
+
+    }
+    .sectionText2{
+        font-size: 35px;
+    }
+ }
+@media (min-width:992px) and (max-width: 1200px) {
+    .sectionText1{
+        font-size: 55px;
+
+    }
+    .sectionText2{
+        font-size: 45px;
+    }
+ }
+
+@media (max-width: 1200px) {
+    .headerLogo{
+width: 230px;
+}
 }
 
 @media (min-width: 1200px) {
         .headerLogo{
     width: 230px;
+    }
+    .sectionText1{
+        font-size: 60px;
+
+    }
+    .sectionText2{
+        font-size: 50px;
+    }
 }
+
+#ads .card-notify-badge {
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    background: #f2d900;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px; 
+    color: #000;
+    padding: 5px 10px;
+    font-size: 14px;
+    z-index: 1;
 }
+#ads .card-notify-year {
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    background: #248f29;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;      
+    font-size: 14px;      
+    width: 50px;
+    height: 50px;    
+    padding: 15px 0 0 0;
+}
+
+#ads .card:hover {
+    /* background: #fff; */
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;

@@ -7,17 +7,20 @@ from .views import (
     download_counter,
 
     aboutus,
+    UseFullListView,
 )
 app_name = "core"
 
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),
+    path('home/<slug:slug>/', HomeView.as_view(), name="home"),
     path("detail/<slug:slug>/", MockUpDetailView.as_view(), name="detail"),
     
-    path("mockups-collect/", MockUpListView.as_view(), name="mockup"),
-    path("mockups-collect/<slug:slug>", MockUpListView.as_view(), name="mockup"),
+    path("mockups/", MockUpListView.as_view(), name="mockup"),
+    path("mockups/<slug:slug>/", MockUpListView.as_view(), name="mockup"),
 
     path('ajax/download_counter/', download_counter, name='download_counter'),
 
-    path("about-us/", aboutus, name="aboutus"),    
+    path("about-us/", aboutus, name="aboutus"),
+    path("usefull-page/", UseFullListView.as_view(), name="usefull"),    
 ]

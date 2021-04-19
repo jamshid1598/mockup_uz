@@ -8,16 +8,16 @@ from .models import (
     MockUp,
     Image,
     Tag,
-
 )
 # Register your models here.
 
 
 class CategoryAdmin(admin.ModelAdmin):
     #  ('name', 'slug', 'image', 'caption', )
-    list_display  = ('name',)
-    orderinig     = ('name',)
+    list_display  = ('name', 'slug', 'active',)
+    orderinig     = ('name', 'slug', 'active', )
     list_display_links = ('name',)
+    list_editable = ('slug', 'active',)
     search_fields = ('name',)
 
     prepopulated_fields = {'slug': ('name',)}
@@ -25,7 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Category', {
             "fields": (
-                'name', 'slug', 'image', 'caption'
+                'name', 'slug', 'active', 'image', 'caption'
             ),
         }),
     )
@@ -37,21 +37,21 @@ class ImageAdminTabularInline(admin.TabularInline):
     model   = Image
     min_num = 1
 
-class MockUpTabularInline(admin.TabularInline):
-    model   = MockUp
-    min_num = 1
+# class MockUpTabularInline(admin.TabularInline):
+#     model   = MockUp
+#     min_num = 1
 
 class ProductAdmin(admin.ModelAdmin):
     # ('category', 'name', 'slug', 'description', 'price', 'discount', 'paid', 'free', 'downloaded', 'viewed', 'liked', 'tags', )
 
-    inlines = [ImageAdminTabularInline, MockUpTabularInline,]
+    inlines = [ImageAdminTabularInline,]
 
-    list_display = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', )
+    list_display = ('category', 'name', 'price', 'discount', 'paid', 'free', 'resolution', 'extension', 'downloaded', )
     list_display_links = ('name', 'downloaded',)
     ordering = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'tags')
     search_fields = ('category', 'name', 'price', 'discount', 'paid', 'free', 'downloaded', 'tags')
 
-    list_editable = ('category', 'price', 'discount', 'paid', 'free', )
+    list_editable = ('category', 'price', 'discount', 'paid', 'free', 'resolution', 'extension', )
 
     prepopulated_fields = {'slug': ('name',)}
     
@@ -63,7 +63,7 @@ class ProductAdmin(admin.ModelAdmin):
         }),
         ('MockUp Info', {
             "fields": (
-                'name', 'slug', 'description', 'tags',
+                'name', 'slug', 'description', 'tags', 'file', 'resolution', 'extension',
             )
         }),
         ('Price Info', {
@@ -99,3 +99,4 @@ class TagAdmin(admin.ModelAdmin):
 admin.site.register(Tag, TagAdmin)
 
 admin.site.register(UserViews)
+

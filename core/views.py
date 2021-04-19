@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse
+from django.contrib import messages 
 from django.http import  JsonResponse
 from django.db.models import F, Q, When, Value, Case
 from django.views.generic import (
@@ -18,6 +19,11 @@ from product.models import (
 	Image,
 	Tag,
 )
+
+from .models import (
+	UseFull,
+	UseFullCategory,
+)
 # Create your views here.
 
 class HomeView(ListView):
@@ -25,20 +31,74 @@ class HomeView(ListView):
 	template_name = "index.html"
 	paginate_by = 18
 
+	slug_field = 'slug'
+	slug_url_kwargs = 'slug'
+
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		downloaded_viewed = Product.objects.order_by("-downloaded",)[:4]
-		context['recomended_product'] = downloaded_viewed
+		context['recommended_list'] = downloaded_viewed
+
+		context['category_list'] = Category.objects.all()
+
 		return context
 	
 	def get_queryset(self):
 		qs = super().get_queryset()
-		try:
+		try: # if some q exits then all products are found that matches q
 			query = self.request.GET.get('q')
-			return qs.filter( Q(name__icontains=query) | Q(slug__icontains=query) | Q(description__icontains=query))
-		except :
+			qs = qs.filter( Q(name__icontains=query) | Q(slug__icontains=query) | Q(description__icontains=query))
+			if len(qs) == 0:
+				print("nothing")
+				messages.warning(self.request, f"Qidiruv natijasi topilmadi :(")
 			return qs
+		except:
+			if 'slug' in self.kwargs: # if exact category sellected, exception catch the slug then return all products of this category
+				slug = self.kwargs.get('slug')
+				category = get_object_or_404(Category, slug=slug)
+				return qs.filter(category=category)[:9]
+			else: # if none of wxacptions above are exacuted then returns qs itself
+				return qs 
 
+
+class MockUpListView(ListView):
+	model = Product
+	template_name = 'products.html'
+	paginate_by = 9
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+
+		if 'slug' in self.kwargs:
+			slug = self.kwargs['slug']
+			context['category'] = Category.objects.get(slug=slug)
+		else:
+			context['category'] = {'name':None}
+
+		context['category_list'] = Category.objects.all()
+		downloaded_viewed = Product.objects.order_by("-downloaded",)[:4]
+		context['recommended_list'] = downloaded_viewed
+
+		return context
+
+	def get_queryset(self):
+		qs = super().get_queryset()
+		
+		try: # if some q exits then all products are found that matches q
+			query = self.request.GET.get('q')
+			# print(query)
+			qs = qs.filter( Q(name__icontains=query) | Q(slug__icontains=query) | Q(description__icontains=query))
+			if len(qs) == 0:
+				print("nothing")
+				messages.warning(self.request, f"Qidiruv natijasi topilmadi :(")
+			return qs
+		except:
+			if 'slug' in self.kwargs: # if exact category sellected, exception catch the slug then return all products of this category
+				slug = self.kwargs.get('slug')
+				category = get_object_or_404(Category, slug=slug)
+				return qs.filter(category=category)
+			else: # if none of wxacptions above are exacuted then returns qs itself
+				return qs 
 
 
 class MockUpDetailView(DetailView):
@@ -70,30 +130,9 @@ class MockUpDetailView(DetailView):
 
 		category = Category.objects.get(slug=mockup.category.slug)
 		category_product = category.product_category.all().order_by('-downloaded',)[:4]
-		context['recomended_product'] = category_product
+		context['recommended_list'] = category_product
 		return context
 
-
-
-class MockUpListView(ListView):
-	model = Product
-	template_name = 'products.html'
-	paginate_by = 9
-
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context['categories'] = Category.objects.all()
-		downloaded_viewed = Product.objects.order_by("-downloaded",)[:4]
-		context['recomended_product'] = downloaded_viewed
-		return context
-
-	def get_queryset(self):
-		try:
-			slug = self.kwargs['slug']
-			category = get_object_or_404(Category, slug=slug)
-			return category.product_category.all()
-		except:
-			return Product.objects.all()
 
 
 def download_counter(request):
@@ -106,6 +145,14 @@ def download_counter(request):
 def aboutus(request, *args, **kwargs):
 	template_name = "aboutus.html"
 	return render(request, template_name, {})
+
+
+
+class UseFullListView(ListView):
+	template_name = 'usefull.html'
+	model = UseFullCategory
+
+
 
 def customer_profile(request, *args, **kwargs):
 	template_name = "index.html"

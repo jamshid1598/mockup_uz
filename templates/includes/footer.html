@@ -1,51 +1,52 @@
 {% load static %}
 
-<footer class="container-fluid pt-5 pb-5 bg-light">
-    <div class="container">
-        <div class="row">
-     <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-        <a href="/"><img src="{% static 'img/logo.svg' %}" width="200"></a>
-       <ul class="list-unstyled pl-5 pt-3">
-         <li><a href="/">Asosiy</a></li>
-         <li><a href="{% url 'core:aboutus' %}">Biz haqimizda</a></li>
-         <li><a href="{% url 'core:mockup' %}">Muckup</a></li>
-       </ul>
-     </div>
-     <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
-      <h5 class="font-weight-bold">Foydali hovolalar</h5>
-        <div class="form-inline">
-        <ul class="list-unstyled pl-5 pt-2">
-         <li><a href="">Logo</a></li>
-         <li><a href="">Fudbolkalar</a></li>
-         <li><a href="">Buyumlar</a></li>
-         <li><a href="">Avtomobillar</a></li>
-         <li><a href="">Qiziqarli</a></li>
-       </ul> 
-       <ul class="list-unstyled pl-5 pt-2">
-         <li><a href="">Logo</a></li>
-         <li><a href="">Fudbolkalar</a></li>
-         <li><a href="">Buyumlar</a></li>
-         <li><a href="">Avtomobillar</a></li>
-         <li><a href="">Qiziqarli</a></li>
-       </ul>
-        </div>
-     </div>
-     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4"> 
-     <h5 class="font-weight-bold">Biz ijtimoiy tarmoqlarda</h5>       
-       <ul class="list-unstyled pl-5 pt-2 socialIcon">
-          <span class="telegram"><i class="fa fa-telegram  mr-2"></i></span>
-          <span class="instagram"><i class="fa fa-instagram  mr-2"></i></span>
-       </ul>
-     </div>
-  </div>
-  <div class="row border-top pt-3">
-     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        {% now 'Y' as year %}
-        ©{{ year }} Barcha huquqlar himoyalangan.
-      </div>
-     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
-        Sayt <a href="https://www.myweb.uz/">MYWEB.UZ</a> studiyasida ishlab chiqilgan.
-      </div>
-  </div>
-    </div>
+<footer class="container-fluid pt-5 pb-2 border-top bg-light">
+	<div class="container">
+		<div class="row text-dark text-center">
+		 	<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+				<a href="#!"><img src="{% static 'img/logo.svg' %}" width="200"></a>
+			 	<ul class="list-unstyled pt-3">
+				 	<li><a href="/" class="text-dark text-decoration-none">Asosiy</a></li>
+				 	<li><a href="{% url 'core:aboutus' %}" class="text-dark text-decoration-none">Biz haqimizda</a></li>
+				 	<li><a href="{% url 'core:mockup' %}" class="text-dark text-decoration-none">Muckup</a></li>
+				 	<li><a href="{% url 'core:usefull' %}" class="text-dark text-decoration-none">Foydali</a></li>
+			 	</ul>
+		 	</div>
+		 	<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+				<ul class="list-unstyled pt-2">
+				 	<li class="pl-3"><a href="products.html" class="text-dark text-decoration-none">3D Model</a></li>
+				 	<li class="pl-3"><a href="products.html" class="text-dark text-decoration-none">Fudbolkalar</a></li>
+				 	<li class="pl-3"><a href="products.html" class="text-dark text-decoration-none">Buyumlar</a></li>
+				 	<li class="pl-3"><a href="products.html" class="text-dark text-decoration-none">Avtomobillar</a></li>
+				 	<li class="pl-3"><a href="products.html" class="text-dark text-decoration-none">Sumka</a></li>
+				 	<li class="pl-3"><a href="products.html" class="text-dark text-decoration-none">Kepka</a></li>
+			 	</ul> 
+			</div>
+			<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+				<ul class="list-unstyled pt-2">
+					<li><a href="products.html" class="text-dark text-decoration-none">Kitob</a></li>
+					<li><a href="products.html" class="text-dark text-decoration-none">Soat</a></li>
+					<li><a href="products.html" class="text-dark text-decoration-none">Brelok</a></li>
+					<li><a href="products.html" class="text-dark text-decoration-none">Avtomobillar</a></li>
+					<li><a href="products.html" class="text-dark text-decoration-none">Krushka</a></li>
+					<li><a href="products.html" class="text-dark text-decoration-none">Qurilmalar</a></li>
+				</ul>
+			</div>
+		 	<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-3 text-center">
+				<a href="#!"><span class="youtube"><i class="fa fa-youtube mr-2"></i></span></a>
+				<a href="#!"><span class="telegram"><i class="fa fa-telegram mr-2"></i></span></a>
+				<a href="#!"><span class="instagram"><i class="fa fa-instagram mr-2"></i></span></a>
+				<a href="#!"><span class="facebook"><i class="fa fa-facebook-square mr-2"></i></span></a>
+		 	</div>
+		</div>
+		<div class="row border-top pt-3 text-secondary">
+			<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center text-sm-center text-md-left text-lg-left text-xl-left">
+				{% now 'Y' as year %}
+				<small>©{{ year }} Barcha huquqlar himoyalangan.</small>
+			</div>
+			<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center text-sm-center text-md-right text-lg-right text-xl-right">
+				<small class="pr-3">Sayt MYWEB.UZ studiyasida ishlab chiqilgan.</small>
+			</div>
+		</div>
+	</div>
 </footer>
