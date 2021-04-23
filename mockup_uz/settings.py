@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1wm3=uy8fpvg03ztx2tb-it=)wm_b)))nc4=2cow6bne(*i)&l'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -67,17 +68,66 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    # 3rd party 
     'tinymce',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.figma',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.mailru',
+    'allauth.socialaccount.providers.telegram',
+    'allauth.socialaccount.providers.yandex',
 
+    # local
     # 'accounts.apps.AccountsConfig',
-    'user.apps.UserConfig',
+    # 'user.apps.UserConfig',
+    'users.apps.UsersConfig',
     'product.apps.ProductConfig',
     'core.apps.CoreConfig',
 ]
 
 # AUTH_USER_MODEL = 'accounts.NewUser'
-AUTH_USER_MODEL = 'user.User'
+# AUTH_USER_MODEL = 'user.User'
+
+# allauth configuration
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+
+    # allauth spesific authentication methods, such as login, by e-mail 
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP' : {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    },
+
+}
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+# ACCOUNT_EMAIL_CONFRMATION_ANONYMOUS_REDIRECT_URL = settings.LOGIN_URL
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_EMAIL_VARIFICATION = 'mandatory'
+ACCOUNT_MAX_EMAIL_ADDRESSES = 2
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 500
+
+
+ACCOUNT_FORMS = {
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -99,7 +149,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request', # 'allauth' needs this from django
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -140,7 +190,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Twillo authy key
-AUTHY_KEY = '1eba52ce038249a6ee2bbdcdabc55594'
+# AUTHY_KEY = '1eba52ce038249a6ee2bbdcdabc55594'
 # '1eba52ce038249a6ee2bbdcdabc55594'
 
 

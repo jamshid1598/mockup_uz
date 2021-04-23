@@ -26,7 +26,7 @@
             <div class="dropdown">
                 <img src="{% static 'img/user.svg' %}" width="35" height="35" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="dropdown-menu  dropdown-menu-lg-right dropdown-menu-xl-right text-center" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="login.html">Kirish</a>
+                <a class="dropdown-item" href="{% url 'users:login' %}">Kirish</a>
                 <a class="dropdown-item" href="register.html">Registratsiya</a>
                 <a class="dropdown-item" href="myprofil.html">Mening profilim</a>
                 <a class="dropdown-item" href="#!">Chiqish</a>
