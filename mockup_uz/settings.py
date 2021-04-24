@@ -81,17 +81,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.mailru',
     'allauth.socialaccount.providers.telegram',
     'allauth.socialaccount.providers.yandex',
+    'phonenumber_field',
 
     # local
     # 'accounts.apps.AccountsConfig',
-    # 'user.apps.UserConfig',
     'users.apps.UsersConfig',
     'product.apps.ProductConfig',
     'core.apps.CoreConfig',
 ]
 
 # AUTH_USER_MODEL = 'accounts.NewUser'
-# AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'users.User'
 
 # allauth configuration
 AUTHENTICATION_BACKENDS = [
@@ -114,20 +114,33 @@ SOCIALACCOUNT_PROVIDERS = {
 
 }
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_AUTHENTICATION_METHOD = 'phonenumber_email'
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 # ACCOUNT_EMAIL_CONFRMATION_ANONYMOUS_REDIRECT_URL = settings.LOGIN_URL
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
-ACCOUNT_EMAIL_VARIFICATION = 'mandatory'
+# ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+# ACCOUNT_EMAIL_VARIFICATION = 'option'
 ACCOUNT_MAX_EMAIL_ADDRESSES = 2
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 500
 
 
 ACCOUNT_FORMS = {
-
+    'login':                   'allauth.account.forms.LoginForm',
+    'signup':                  'allauth.account.forms.SignupForm',
+    'add_email':               'allauth.account.forms.AddEmailForm',
+    'change_password':         'allauth.account.forms.ChangePasswordForm',
+    'set_password':            'allauth.account.forms.SetPasswordForm',
+    'reset_password':          'allauth.account.forms.ResetPasswordForm',
+    'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+    'disconnect':              'allauth.socialaccount.forms.DisconnectForm',
 }
+
+LOGIN_REDIRECT_URL = '/'
+
+# django-phonenumber-fields configuration
+PHONENUMBER_DEFAULT_REGION = 'UZ'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

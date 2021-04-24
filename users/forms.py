@@ -8,17 +8,15 @@ from .models import User
 
 
 class RegisterForm(forms.ModelForm):
-    phone_number = forms.IntegerField(required=True)
+    phonenumber = forms.IntegerField(required=True)
     password1 = forms.CharField(widget=forms.PasswordInput())
     password2 = forms.CharField(widget=forms.PasswordInput())
-    country_code = forms.IntegerField()
 
     MIN_LENGTH = 4
 
     class Meta:
         model = User
-        fields = ['username','country_code','phone_number', 'password1', 'password2',
-                  'full_name' ]
+        fields = ['phonenumber', 'email', 'password1', 'password2',]
 
     def clean_username(self):
         username = self.data.get('username')
@@ -31,12 +29,12 @@ class RegisterForm(forms.ModelForm):
             raise forms.ValidationError(_("Passwords do not match"))
         return password
 
-    def clean_phone_number(self):
-        phone_number = self.data.get('phone_number')
-        if User.objects.filter(phone_number=phone_number).exists():
+    def clean_phonenumber(self):
+        phonenumber = self.data.get('phonenumber')
+        if User.objects.filter(phonenumber=phonenumber).exists():
             raise forms.ValidationError(
                 _("Another user with this phone number already exists"))
-        return phone_number
+        return phonenumber
 
     def save(self, *args, **kwargs):
         user = super(RegisterForm, self).save(*args, **kwargs)

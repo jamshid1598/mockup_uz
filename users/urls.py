@@ -1,10 +1,16 @@
 from django.urls import path
-from .views import *
-from allauth.account.forms import LoginForm
-from allauth.account.views import LoginView
+from .views import (
+    RegisterView,
+    PhoneVerificationView,
+    LoginView,
+    DashboardView,
 
-app_name = 'users'
+)
+
+app_name = "account"
 
 urlpatterns = [
-    path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('login/', LoginView.as_view(), name="login"),
+    path('signup/', RegisterView.as_view(), name="signup"),
+    path('dashboard/', DashboardView.as_view(), name="dashboard"),    
 ]

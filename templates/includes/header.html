@@ -1,40 +1,40 @@
 {% load static %}
 
 <header class="container-fluid pl-0 pr-0 fixed-top bg-light" style="height: 8vh;">
-    <nav class="container navbar navbar-expand-lg navbar-light text-center pl-0 pr-0">
-      <a class="navbar-brand pl-2" href="/"><img src="{% static 'img/logo.svg' %}" class="headerLogo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto pt-2">
-          <li class="nav-item">
-            <a class="nav-link active h4  bestFont2 text-dark pr-3" aria-current="page" href="/">Asosiy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active h4  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:aboutus' %}">Biz haqimizda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active h4  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:mockup' %}">Kategoriya</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active h4  bestFont2 text-dark pr-5 pl-3" href="{% url 'core:usefull' %}">Foydali</a>
-          </li>
-        </ul>
-        <form class="socialIconHeader form-inline justify-content-center pb-3 pt-3">
-            
-            <div class="dropdown">
-                <img src="{% static 'img/user.svg' %}" width="35" height="35" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div class="dropdown-menu  dropdown-menu-lg-right dropdown-menu-xl-right text-center" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{% url 'users:login' %}">Kirish</a>
-                <a class="dropdown-item" href="register.html">Registratsiya</a>
-                <a class="dropdown-item" href="myprofil.html">Mening profilim</a>
-                <a class="dropdown-item" href="#!">Chiqish</a>
-              </div>
-            </div>
-        </form>    
-  
-      </div>
-    </div>
-  </nav>
-  </header>
+	<nav class="container navbar navbar-expand-lg navbar-light text-center pl-0 pr-0">
+		<a class="navbar-brand pl-2" href="/"><img src="{% static 'img/logo.svg' %}" class="headerLogo"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto pt-2">
+				<li class="nav-item">
+					<a class="nav-link active h4  bestFont2 text-dark pr-3" aria-current="page" href="/">Asosiy</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active h4  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:aboutus' %}">Biz haqimizda</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active h4  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:mockup' %}">Kategoriya</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active h4  bestFont2 text-dark pr-5 pl-3" href="{% url 'core:usefull' %}">Foydali</a>
+				</li>
+			</ul>
+			<form class="socialIconHeader form-inline justify-content-center pb-3 pt-3">
+				<div class="dropdown">
+					<img src="{% static 'img/user.svg' %}" width="35" height="35" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="dropdown-menu  dropdown-menu-lg-right dropdown-menu-xl-right text-center" aria-labelledby="dropdownMenuButton">
+						{% if user.is_authenticated %}
+							<a class="dropdown-item" href="#">Mening profilim</a>
+							<a class="dropdown-item" href="{% url 'account_logout' %}">Chiqish</a>
+						{% else %}
+							<a class="dropdown-item" href="{% url 'account_login' %}">Kirish</a>
+							<a class="dropdown-item" href="{% url 'account_signup' %}">Registratsiya</a>
+						{% endif %}
+					</div>
+				</div>
+			</form>   
+		</div>
+	</nav>
+</header>

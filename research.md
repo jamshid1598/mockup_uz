@@ -6,3 +6,7 @@ Django Property ==> https://stackoverflow.com/questions/58558989/what-does-djang
 
 
 django-2fa tutorial => https://www.codementor.io/@rishabh_ags/twilio-project-bl2kk9fwj
+
+django-phonenumber-fields  => https://pypi.org/project/django-phonenumber-field/
+
+Customize usermodel => https://medium.com/@ksarthak4ever/django-custom-user-model-allauth-for-oauth-20c84888c318
