@@ -6,7 +6,7 @@ from .models import User
 
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
-        ('User Info', {'fields': ('phonenumber', 'email', 'last_login', 'phone_number_verified', 'change_pw',)}),
+        ('User Info', {'fields': ('phone_number', 'last_login', 'phone_number_verified', 'change_pw',)}),
         ('User Permissions', {'fields': (
             'is_active', 
             'is_staff', 
@@ -25,10 +25,10 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
-    list_display = ('phonenumber', 'email', 'is_staff', 'is_superuser', 'is_active', 'last_login', 'date_joined', 'phone_number_verified', 'change_pw',)
+    list_display = ('phone_number', 'is_staff', 'is_superuser', 'is_active', 'last_login', 'date_joined', 'phone_number_verified', 'change_pw',)
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
-    search_fields = ('phonenumber', 'email',)
-    ordering = ('phonenumber', 'email',)
+    search_fields = ('phone_number',)
+    ordering = ('phone_number', )
     filter_horizontal = ('groups', 'user_permissions',)
 
 admin.site.register(User, UserAdmin)

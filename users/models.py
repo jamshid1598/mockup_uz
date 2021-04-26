@@ -9,8 +9,8 @@ from .manager import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    phonenumber = PhoneNumberField(_('phonenumber'), unique=True)
-    email = models.EmailField(_('email'), max_length=254, blank=True, null=True, unique=True)
+    phone_number = PhoneNumberField(_('phone_number'), unique=True)
+    # email = models.EmailField(_('email'), max_length=254, blank=True, null=True, unique=True)
     is_staff = models.BooleanField(_('is_staff'), default=False)
     is_superuser = models.BooleanField(_('is_superuser'), default=False)
     is_active = models.BooleanField(_('is_active'), default=True)
@@ -22,18 +22,18 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'phonenumber'
-    PHONENUMBER_FIELD = 'phonenumber'
-    EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['email',]
+    USERNAME_FIELD = 'phone_number'
+    PHONE_NUMBER_FIELD = 'phone_number'
+    # EMAIL_FIELD = 'email'
+    # REQUIRED_FIELDS = ['email',]
 
     class Meta:
-        ordering = ('phonenumber', 'email')
+        ordering = ('phone_number',)
         verbose_name = _('user')
         verbose_name_plural = _('users')
 
     def __str__(self):
-        return str(self.phonenumber)
+        return str(self.phone_number)
 
     def get_absolute_url(self):
         return "/users/%i/" % (self.pk)

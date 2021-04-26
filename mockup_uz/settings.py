@@ -72,15 +72,6 @@ INSTALLED_APPS = [
 
     # 3rd party 
     'tinymce',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.figma',
-    'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.mailru',
-    'allauth.socialaccount.providers.telegram',
-    'allauth.socialaccount.providers.yandex',
     'phonenumber_field',
 
     # local
@@ -93,50 +84,6 @@ INSTALLED_APPS = [
 # AUTH_USER_MODEL = 'accounts.NewUser'
 AUTH_USER_MODEL = 'users.User'
 
-# allauth configuration
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-
-    # allauth spesific authentication methods, such as login, by e-mail 
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-SITE_ID = 1
-
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP' : {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
-    },
-
-}
-
-ACCOUNT_AUTHENTICATION_METHOD = 'phonenumber_email'
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-# ACCOUNT_EMAIL_CONFRMATION_ANONYMOUS_REDIRECT_URL = settings.LOGIN_URL
-# ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
-# ACCOUNT_EMAIL_VARIFICATION = 'option'
-ACCOUNT_MAX_EMAIL_ADDRESSES = 2
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 500
-
-
-ACCOUNT_FORMS = {
-    'login':                   'allauth.account.forms.LoginForm',
-    'signup':                  'allauth.account.forms.SignupForm',
-    'add_email':               'allauth.account.forms.AddEmailForm',
-    'change_password':         'allauth.account.forms.ChangePasswordForm',
-    'set_password':            'allauth.account.forms.SetPasswordForm',
-    'reset_password':          'allauth.account.forms.ResetPasswordForm',
-    'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
-    'disconnect':              'allauth.socialaccount.forms.DisconnectForm',
-}
-
-LOGIN_REDIRECT_URL = '/'
 
 # django-phonenumber-fields configuration
 PHONENUMBER_DEFAULT_REGION = 'UZ'
@@ -231,7 +178,3 @@ STATICFILES_DIRS = (BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_root/'
-
-# 6Z8PbBDfEhv4azTd1YlhGePvHN4N3dLl
-# Account Sid: ACef4c1bff5c2bb65c5edf53224dabab56
-# Auth Token: 1eba52ce038249a6ee2bbdcdabc55594
