@@ -84,6 +84,7 @@ INSTALLED_APPS = [
 # AUTH_USER_MODEL = 'accounts.NewUser'
 AUTH_USER_MODEL = 'users.User'
 
+SITE_ID = 1
 
 # django-phonenumber-fields configuration
 PHONENUMBER_DEFAULT_REGION = 'UZ'

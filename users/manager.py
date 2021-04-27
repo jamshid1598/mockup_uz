@@ -4,14 +4,14 @@ from django.utils import timezone
 
 class UserManager(BaseUserManager):
 
-  def _create_user(self, phonenumber, password, is_staff, is_superuser, **extra_fields):
-    if not phonenumber:
+  def _create_user(self, phone_number, password, is_staff, is_superuser, **extra_fields):
+    if not phone_number:
         raise ValueError('Users must have an phone number')
     
     now = timezone.now()
     # email = self.normalize_email(email)
     user = self.model(
-        phonenumber=phonenumber,
+        phone_number=phone_number,
         # email=email,
         is_staff=is_staff, 
         is_active=True,
@@ -24,10 +24,10 @@ class UserManager(BaseUserManager):
     user.save(using=self._db)
     return user
 
-  def create_user(self,phonenumber, password, **extra_fields):
-    return self._create_user(phonenumber, password, False, False, **extra_fields)
+  def create_user(self,phone_number, password, **extra_fields):
+    return self._create_user(phone_number, password, False, False, **extra_fields)
 
-  def create_superuser(self, phonenumber, password, **extra_fields):
-    user=self._create_user(phonenumber, password, True, True, **extra_fields)
+  def create_superuser(self, phone_number, password, **extra_fields):
+    user=self._create_user(phone_number, password, True, True, **extra_fields)
     user.save(using=self._db)
     return user

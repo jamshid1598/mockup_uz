@@ -10,7 +10,6 @@ from .manager import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
     phone_number = PhoneNumberField(_('phone_number'), unique=True)
-    # email = models.EmailField(_('email'), max_length=254, blank=True, null=True, unique=True)
     is_staff = models.BooleanField(_('is_staff'), default=False)
     is_superuser = models.BooleanField(_('is_superuser'), default=False)
     is_active = models.BooleanField(_('is_active'), default=True)
@@ -24,8 +23,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'phone_number'
     PHONE_NUMBER_FIELD = 'phone_number'
-    # EMAIL_FIELD = 'email'
-    # REQUIRED_FIELDS = ['email',]
 
     class Meta:
         ordering = ('phone_number',)
@@ -38,3 +35,21 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_absolute_url(self):
         return "/users/%i/" % (self.pk)
 
+
+
+class UserInfo(models.Model):
+    image = models.ImageField(_('image'), upload_to='user-image/', blank=True, null=True)
+    full_name = models.CharField(_('full_name'), max_length=255,)
+    phone_number = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_info')
+    email = models.EmailField(_('email'), blank=True, null=True)
+    address = models.CharField(_('address'), max_length=255, blank=True, null=True)
+    company = models.CharField(_('company'), max_length=255, blank=True, null=True)
+    company_web_site = models.URLField(_('Company_web_site'), blank=True, null=True)
+    company_address = models.CharField(_('company_address'), max_length=255, blank=True, null=True)
+
+    class Meta:
+        verbose_name='User\'s Info'
+        verbose_name_plural = 'Users\' Info'
+
+    def __str__(self):
+        return self.full_name + " | " + str(self.phone_number.phone_number)

@@ -1,13 +1,17 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.urls import reverse
 from django.views.generic import TemplateView, FormView
 from django.views import View
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+from django.utils.translation import ugettext as _
 import json
-from .forms import ValidatePhoneNumberForm # RegisterForm, LoginForm, PhoneVerificationForm
+from .forms import (
+    ValidatePhoneNumberForm,
+) # RegisterForm, LoginForm, PhoneVerificationForm
 # from .authy_api import send_verfication_code, verify_sent_code
 # from .models import User
 
@@ -15,9 +19,28 @@ from .forms import ValidatePhoneNumberForm # RegisterForm, LoginForm, PhoneVerif
 
 
 class ValidatePhoneNumberView(SuccessMessageMixin, FormView):
-    template_name = 'registration/signup-step-1.html'
+    template_name = 'registration/signup-step-1-phonenumber.html'
     form_class = ValidatePhoneNumberForm
-    success_message = "Confirmation code sent to your registered mobile number. The confirmation code is valid for 10 minutes."
+    success_message = _("Confirmation code sent to your registered mobile number. The confirmation code is valid for 10 minutes.")
+
+    def get_success_url(self):
+        return reverse('users:phone-confirmation')
+
+def validation_phonenumber_view(self, request):
+    template_name='registration/signup-step-1-phonenumber.html'
+    form =ValidatePhoneNumberForm()
+
+
+
+def phone_verification_view(request):
+    template_name = 'registration/signup-step-1-confirmation.html'
+    context={}
+    return render(request, template_name, context)
+
+
+# def logout(request):
+#     request.logout()
+
 
 # class RegisterView(SuccessMessageMixin, FormView):
 #     template_name = 'registration/register.html'

@@ -3,21 +3,23 @@ from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate
-from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.formfields import PhoneNumberField
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 from .models import User
 
 
 
 class ValidatePhoneNumberForm(forms.Form):
-    phone_number = forms.CharField(max_length=13, required=True)
+    phone_number = PhoneNumberField()
 
     def clean_phone_number(self):
-        phonenumber = PhoneNumberField()
-        try:
-            phonenumber=phone_number
-        except :
-            raise forms.ValidationError(_("Phone number doesn't valid"))
+        phone_number = self.data.get('phone_number')
+        print(phone_number)
+        if User.objects.filter(phone_number=phone_number).exists():
+            raise forms.ValidationError(_('Another user with this phone number is allready exists, \nTry diffrent phone number'))
+        return phone_number
 # class RegisterForm(forms.ModelForm):
 #     phone_number = forms.CharField(max_length=13, required=True)
 #     password1 = forms.CharField(widget=forms.PasswordInput())

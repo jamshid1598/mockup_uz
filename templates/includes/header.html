@@ -27,7 +27,7 @@
 					<div class="dropdown-menu  dropdown-menu-lg-right dropdown-menu-xl-right text-center" aria-labelledby="dropdownMenuButton">
 						{% if user.is_authenticated %}
 							<a class="dropdown-item" href="#">Mening profilim</a>
-							<a class="dropdown-item" href="">Chiqish</a>
+							<a class="dropdown-item" href="{% url 'users:logout' %}">Chiqish</a>
 						{% else %}
 							<a class="dropdown-item" href="">Kirish</a>
 							<a class="dropdown-item" href="{% url 'users:phone-number' %}">Registratsiya</a>
