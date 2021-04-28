@@ -1,5 +1,6 @@
 {% extends "../base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} <title>muckup.uz</title> {% endblock title %}
 
@@ -16,18 +17,10 @@
 		<section>
 			<div class="container-fluid pt-5" style="min-height: 72vh;">
 				<div class="container">
-					{% if messages %}
-						<div id="messages">
-							{% for message in messages %}
-								<div class="alert alert-dismissible alert-info" role="alert">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									{{ message|escape }}
-								</div>
-							{% endfor %}
-						</div>
-					{% endif %}
+					
+					<!-- Messages -->
+					{% include 'includes/messages.html' %}
+
 					{% if form.non_field_errors %}
 						<div id="messages">
 							{% for message in form.non_field_errors %}
@@ -40,22 +33,31 @@
 							{% endfor %}
 						</div>
 					{% endif %}
+
 					<div class="card pt-5 border-0">
 						<div class="card-body border text-center" style="margin: auto;">
-							<h3 class="text-dark pb-5">Авторизоваться</h3>
+							<h3 class="text-dark pb-5">{% trans 'Login' %}</h3>
 							<!-- Login Form -->
 							<form  class="pt--20 pb--30 login" method="POST" action="">
 								{% csrf_token %}
-									<input id="id_username" maxlength="150" name="username" placeholder="Username" class="form-control mb-1" type="text" required />
-									<div class="error-block">{{ form.username.errors }}</div>
-
-									<input class="form-control mb-5" id="id_password" name="password" placeholder="password" type="password" required />
-									<div class="error-block">{{ form.password.errors }}</div>
-
+								<div class="form-group{% if form.phone_number.errors %} has-error{% endif %}">
+									<label class="control-label" for="id_phone_number">{% trans 'Phone Number' %}</label>
+									<div class="form-inline">
+										<input class="form-control input-lg" id="id_phone_number" name="phone_number" style="width: 100%" type="text" required />
+										<div class="error-block">{{ form.phone_number.errors }}</div>
+									</div>
+								</div>
+								<div class="form-group{% if form.password.errors %} has-error{% endif %}">
+									<label class="control-label" for="id_password">{% trans 'Password' %}</label>
+									<div class="form-inline">
+										<input class="form-control input-lg" id="id_password" name="password" style="width: 100%" type="password" required />
+										<div class="error-block">{{ form.password.errors }}</div>
+									</div>
+								</div>
 									<button class="btn btn-block login_btn" type="submit">Войти</button>
 							</form>
 							<!-- End Login Form -->
-							<p><a href="passwordreset.html" class="h6 text-dark"> Забыл пароль? </a></p>
+							<p><a href="" class="h6 text-dark"> Забыл пароль? </a></p>
 							<br>
 							<p>Если вы еще не создали учетную запись, сначала 
 								<a href="" class="text-secondary" >зарегистрируйтесь.</a>

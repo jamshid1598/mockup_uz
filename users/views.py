@@ -8,38 +8,164 @@ from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from django.utils import timezone
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+User = get_user_model()
 import json
+from random import randint
 from .forms import (
-    ValidatePhoneNumberForm,
+	ValidatePhoneNumberForm,
+	ConfirmationForm,
+	PasswordCreateForm,
+	LoginForm,
 ) # RegisterForm, LoginForm, PhoneVerificationForm
 # from .authy_api import send_verfication_code, verify_sent_code
 # from .models import User
 
+from .models import (
+	CustomToken,
+)
 
 
 
-class ValidatePhoneNumberView(SuccessMessageMixin, FormView):
-    template_name = 'registration/signup-step-1-phonenumber.html'
-    form_class = ValidatePhoneNumberForm
-    success_message = _("Confirmation code sent to your registered mobile number. The confirmation code is valid for 10 minutes.")
+# class ValidatePhoneNumberView(SuccessMessageMixin, FormView):
+#     template_name = 'registration/signup-step-1-phonenumber.html'
+#     form_class = ValidatePhoneNumberForm
+#     success_message = _("Confirmation code sent to your registered mobile number. The confirmation code is valid for 10 minutes.")
 
-    def get_success_url(self):
-        return reverse('users:phone-confirmation')
-
-def validation_phonenumber_view(self, request):
-    template_name='registration/signup-step-1-phonenumber.html'
-    form =ValidatePhoneNumberForm()
+	# def get_success_url(self):
+	#     return reverse('users:phone-confirmation')
 
 
+def validation_phonenumber_view(request):
 
-def phone_verification_view(request):
-    template_name = 'registration/signup-step-1-confirmation.html'
-    context={}
-    return render(request, template_name, context)
+	if not request.session.exists(request.session.session_key):
+		request.session.create() 
+	session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME, None)
+
+	template_name='registration/signup-step-1-phonenumber.html'
+
+	if request.method=='POST':
+		form = ValidatePhoneNumberForm(request.POST)
+		if form.is_valid():
+			phone_number = form.cleaned_data['phone_number']
+			confirmation_code = randint(1000, 9999)
+			print("confirmation code ", confirmation_code)
+			custom_token, created = CustomToken.objects.get_or_create(phone_number=phone_number, confirmation_code=confirmation_code, session_key=session_key)
+			if created:
+				custom_token.delete()
+				custom_token = CustomToken.objects.create(phone_number=phone_number, confirmation_code=confirmation_code, session_key=session_key)
+			custom_token.save()
+			messages.success(request, _("Confirmation code sent to your registered mobile number. The confirmation code is valid for 5 minutes."))
+			return redirect('users:phone-confirmation', custom_token.key)
+		else:
+			return render(request, template_name, {'form': form})
+	else:
+		form = ValidatePhoneNumberForm()
+	return render(request, template_name, {'form': form})
 
 
-# def logout(request):
-#     request.logout()
+def phone_verification_view(request, key):
+
+	if not request.session.exists(request.session.session_key):
+		request.session.create() 
+	session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME, None)
+
+	template_name = 'registration/signup-step-1-confirmation.html'
+	try:
+		custom_token = CustomToken.objects.get(key=key, session_key=session_key)
+		created_at   = custom_token.created
+
+		print("time: ", created_at.strftime("%Y-%m-%d %H:%M:%S"), timezone.now().strftime("%Y-%m-%d %H:%M:%S"))
+	except:
+		return redirect('users:phone-number')
+	form = ConfirmationForm(request.POST)
+	if form.is_valid():
+		confirmation_code = form.cleaned_data['confirmation_code']
+		confirmation_code = int(confirmation_code)
+		if confirmation_code == custom_token.confirmation_code:
+			phone_number = custom_token.phone_number
+			custom_token.delete()
+			custom_token = CustomToken.objects.create(phone_number=phone_number, session_key=session_key)
+			messages.success(request, _('Successfully confirmed, now you can create a password for your mockup.uz account'))
+			return redirect('users:create-password', custom_token)
+		else:
+			messages.error(request, _('Password didn\'t match :(, \nTry again'))
+	print('session', request.session.session_key)
+	context={'phone_number': custom_token.phone_number, 'form':form}
+	return render(request, template_name, context)
+
+
+def create_password_for_account(request, key):
+
+	if not request.session.exists(request.session.session_key):
+		request.session.create() 
+	session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME, None)
+
+	template_name = 'registration/signup-step-1-createpassword.html'
+	try:
+		custom_token = CustomToken.objects.get(key=key, session_key=session_key)
+	except:
+		messages.error(request, _('Something went wrong, Try again'))
+		return redirect('users:phone-number')
+
+	form = PasswordCreateForm(request.POST)
+	if form.is_valid():
+		phone_number = form.cleaned_data['phone_number']
+		password1    = form.cleaned_data['password1']
+		user = User.objects.create(phone_number=phone_number, phone_number_verified=True)
+		user.set_password(password1)
+		user.save()
+		login(request, user)
+		return redirect('/')
+	else:
+		# messages.error(request, _('Something went wrong, plz check and try again'))
+		form = PasswordCreateForm()
+	context = {'form':form, 'phone_number':custom_token.phone_number}
+
+	return render(
+		request,
+		template_name,
+		context
+	)
+
+
+def login_view(request):
+	template_name='registration/login.html'
+	if request.method =='POST':
+		form = LoginForm(request.POST)
+		if form.is_valid():
+			phone_number = form.cleaned_data['phone_number']
+			password     = form.cleaned_data['password']
+
+			user = authenticate(phone_number=phone_number, password=password)
+			if user:
+				login(request, user)
+				messages.error(request, _('Successfully loged in' ))
+				return redirect('/')
+			else:
+				messages.error(_('Phone number or password didn\'t match, please try again' ))
+		else:
+			messages.error(_('Phone number or password didn\'t match, please try again' ))
+			form=LoginForm()
+			context={'form': form}
+			return render(request, template_name, context)
+	else:
+		form=LoginForm()
+	context={'form': form}
+	return render(request, template_name, context)
+
+
+
+
+@login_required
+def logout_view(request):
+	logout(request)
+	messages.info(request, "Logged out successfully!")
+	return redirect("/")
+	
 
 
 # class RegisterView(SuccessMessageMixin, FormView):

@@ -10,3 +10,5 @@ django-2fa tutorial => https://www.codementor.io/@rishabh_ags/twilio-project-bl2
 django-phonenumber-fields  => https://pypi.org/project/django-phonenumber-field/
 
 Customize usermodel => https://medium.com/@ksarthak4ever/django-custom-user-model-allauth-for-oauth-20c84888c318
+
+generate token => https://stackoverflow.com/questions/27043349/how-to-use-custom-token-model-in-django-rest-framework
