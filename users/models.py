@@ -61,7 +61,10 @@ class UserInfo(models.Model):
         verbose_name_plural = 'Users\' Info'
 
     def __str__(self):
-        return self.full_name + " | " + str(self.phone_number.phone_number)
+        if self.full_name:
+            return self.full_name + " | " + str(self.phone_number.phone_number)
+        else:
+            return str(self.phone_number.phone_number)
 
 def post_save_user_receiver(sender, instance, created, **kwargs):
     phone_number = instance

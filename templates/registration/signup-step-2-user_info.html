@@ -39,23 +39,72 @@
 						{% endif %}
 						<!-- Messages -->
 
-						<form class="account-register form-narrow" id="signup_form" method="POST" action="" >
+						<form class="account-register form-narrow" enctype="multipart/form-data" id="signup_form" method="POST" action="" >
 							<div class="row">
 								<div class="col text-center title">
-									<h1 class="text-dark">{% trans 'Sign Up' %}</h1>
+									<h1 class="text-dark">{% trans 'Sign Up (2nd Step)' %}</h1>
 								</div>
 							</div>
 							{% csrf_token %}
-							<div class="form-group{% if form.phone_number.errors %} has-error{% endif %}">
-								<label class="control-label" for="id_phone_number">{% trans 'Phone Number' %}</label>
+							<div class="form-group{% if form.image.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_image">{% trans 'Upload Your Image' %}</label>
 								<div class="form-inline">
-									<input class="form-control input-lg" id="id_phone_number" name="phone_number" style="width: 100%" type="text" placeholder="phone number" required />
-									<div class="error-block">{{ form.phone_number.errors }}</div>
+									<input class="form-control input-lg" id="id_image" name="image" style="width: 100%" type="file"/>
+									<div class="error-block">{{ form.image.errors }}</div>
 							  	</div>
 							</div>
+							<div class="form-group{% if form.full_name.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_phone_number">{% trans 'Full Name' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_full_name" name="full_name" style="width: 100%" type="text" placeholder="(e.x) John Don" required />
+									<div class="error-block">{{ form.full_name.errors }}</div>
+							  	</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="id_phone_number">{% trans 'Phone Number' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_phone_number" name="text" style="width: 100%" type="text" value="{{ phone_number }}" readonly/>
+							  	</div>
+							</div>
+							<div class="form-group{% if form.email.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_email">{% trans 'Email' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_email" name="email" style="width: 100%" type="email" placeholder="(e.x) example@gmail.com" />
+									<div class="error-block">{{ form.email.errors }}</div>
+							  	</div>
+							</div>
+							<div class="form-group{% if form.address.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_address">{% trans 'Address' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_address" name="address" style="width: 100%" type="text" placeholder="(e.x) 01, Mirzo Ulug'bek district, Tashkent City" />
+									<div class="error-block">{{ form.address.errors }}</div>
+							  	</div>
+							</div>
+							<div class="form-group{% if form.company.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_company">{% trans 'Company Name' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_company" name="company" style="width: 100%" type="text" placeholder="(e.x) Marvel Creative" />
+									<div class="error-block">{{ form.company.errors }}</div>
+							  	</div>
+							</div>
+							<div class="form-group{% if form.company_web_site.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_company_web_site">{% trans 'Company Web Site' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_company_web_site" name="company_web_site" style="width: 100%" type="text" placeholder="(e.x) https://myprint.uz" />
+									<div class="error-block">{{ form.company_web_site.errors }}</div>
+							  	</div>
+							</div>
+							<div class="form-group{% if form.company_address.errors %} has-error{% endif %}">
+								<label class="control-label" for="id_company_address">{% trans 'Company Address' %}</label>
+								<div class="form-inline">
+									<input class="form-control input-lg" id="id_company_address" name="company_address" style="width: 100%" type="Text" placeholder="(e.x) 32A, Chilonzor 14, Tashkent city" />
+									<div class="error-block">{{ form.company_address.errors }}</div>
+							  	</div>
+							</div>
+
 							<div class="row justify-content-start mt-4 pb-4">
 								<div class="col">
-									<button type="submit" class="btn mt-4 w-100 register_btn">{% trans 'Send Code' %}</button>
+									<button type="submit" class="btn mt-4 w-100 register_btn">{% trans 'Complete Sign Up' %}</button>
 								</div>
 							</div>
 						</form>

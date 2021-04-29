@@ -13,72 +13,93 @@ from .models import User, UserInfo
 
 
 class ValidatePhoneNumberForm(forms.Form):
-    phone_number = PhoneNumberField(widget=forms.TextInput(
-        attrs={'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"}))
+	phone_number = PhoneNumberField(widget=forms.TextInput(
+		attrs={'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"}))
 
-    def clean_phone_number(self):
-        phone_number = self.data.get('phone_number')
-        if User.objects.filter(phone_number=phone_number).exists():
-            raise forms.ValidationError(_('Another user with this phone number is allready exists, \nTry diffrent phone number'))
-        return phone_number
+	def clean_phone_number(self):
+		phone_number = self.data.get('phone_number')
+		if User.objects.filter(phone_number=phone_number).exists():
+			raise forms.ValidationError(_('Another user with this phone number is allready exists, \nTry diffrent phone number'))
+		return phone_number
 
 class ConfirmationForm(forms.Form):
-    confirmation_code = forms.CharField(widget=forms.NumberInput(attrs={
-        'class':"form-control input-lg", 'id':"id_confirmation_code", 'name':"confirmation_code", 'style':"width: 100%", 'type':"number", 'placeholder':"4 digit confirmation code",
-    }))
+	confirmation_code = forms.CharField(widget=forms.NumberInput(attrs={
+		'class':"form-control input-lg", 'id':"id_confirmation_code", 'name':"confirmation_code", 'style':"width: 100%", 'type':"number", 'placeholder':"4 digit confirmation code",
+	}))
 
-    def clean_confirmation_code(self):
-        code = self.data.get('confirmation_code')
-        if not len(code) == 4:
-            # print("Code", type(code))
-            raise forms.ValidationError(_('Confirmation code must contains 4 digit'))
-        return code
+	def clean_confirmation_code(self):
+		code = self.data.get('confirmation_code')
+		if not len(code) == 4:
+			# print("Code", type(code))
+			raise forms.ValidationError(_('Confirmation code must contains 4 digit'))
+		return code
 
 class PasswordCreateForm(forms.Form):
-    phone_number = PhoneNumberField(widget=forms.TextInput(attrs={
-        'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"hidden"
-    }))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class':"form-control input-lg", 'id':"id_password1", 'name':"password1", 'style':"width: 100%", 'type':"password" 
-    }))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class':"form-control input-lg", 'id':"id_password2", 'name':"password2", 'style':"width: 100%", 'type':"password" 
-    }))
+	phone_number = PhoneNumberField(widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"hidden"
+	}))
+	password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+		'class':"form-control input-lg", 'id':"id_password1", 'name':"password1", 'style':"width: 100%", 'type':"password" 
+	}))
+	password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+		'class':"form-control input-lg", 'id':"id_password2", 'name':"password2", 'style':"width: 100%", 'type':"password" 
+	}))
 
-    def clean_password1(self):
-        password1 = self.data.get('password1')
-        password2 = self.data.get('password2')
-        if password1 != password2:
-            raise forms.ValidationError(_('Passwords didn\'t match, \nPlease check and try again'))
-        elif len(password1) < 8:
-            raise forms.ValidationError(_("Password must contains at least 8 charachter"))
-        return password1
+	def clean_password1(self):
+		password1 = self.data.get('password1')
+		password2 = self.data.get('password2')
+		if password1 != password2:
+			raise forms.ValidationError(_('Passwords didn\'t match, \nPlease check and try again'))
+		elif len(password1) < 8:
+			raise forms.ValidationError(_("Password must contains at least 8 charachter"))
+		return password1
 
 class LoginForm(forms.Form):
-    phone_number = PhoneNumberField(widget=forms.TextInput(attrs={
-        'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"
-    }))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class':"form-control input-lg", 'id':"id_password", 'name':"password", 'style':"width: 100%", 'type':"password" 
-    }))
+	phone_number = PhoneNumberField(widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"
+	}))
+	password = forms.CharField(widget=forms.PasswordInput(attrs={
+		'class':"form-control input-lg", 'id':"id_password", 'name':"password", 'style':"width: 100%", 'type':"password" 
+	}))
 
 
 class PasswordResetForm(forms.Form):
-    phone_number = PhoneNumberField(widget=forms.TextInput(
-        attrs={'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"}))
+	phone_number = PhoneNumberField(widget=forms.TextInput(
+		attrs={'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"}))
 
-    # def clean_phone_number(self):
-    #     phone_number = self.data.get('phone_number')
-    #     if not User.objects.filter(phone_number=phone_number).exists():
-    #         raise forms.ValidationError(_('This phone number haven\'t been registered yet'))
-    #     return phone_number
+	# def clean_phone_number(self):
+	#     phone_number = self.data.get('phone_number')
+	#     if not User.objects.filter(phone_number=phone_number).exists():
+	#         raise forms.ValidationError(_('This phone number haven\'t been registered yet'))
+	#     return phone_number
 
 
-class UserInfoForm(forms.ModelForm):
-    class Meta:
-        model = UserInfo
-        fields = '__all__'
-
+class UserInfoForm(forms.ModelForm):  
+	image            = forms.ImageField(widget=forms.FileInput(attrs={
+		'class':"form-control input-lg", 'id':"id_image", 'name':"image", 'style':"width: 100%", 'type':"file"
+	}))      
+	full_name        = forms.CharField( widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_full_name", 'name':"full_name", 'style':"width: 100%", 'type':"text", 'placeholder':"(e.x) John Don"
+	}))
+	email            = forms.EmailField(widget=forms.EmailInput(attrs={
+		'class':"form-control input-lg", 'id':"id_email", 'name':"email", 'style':"width: 100%", 'type':"email", 'placeholder':"(e.x) example@gmail.com"
+	}))
+	address          = forms.CharField(widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_address", 'name':"address", 'style':"width: 100%", 'type':"text", 'placeholder': '(e.x) 01, Mirzo Ulug\'bek district, Tashkent City'
+	}))
+	company          = forms.CharField(widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_company", 'name':"company", 'style':"width: 100%", 'type':"text", 'placeholder': '(e.x) Marvel Creative'
+	}))
+	company_web_site = forms.CharField(widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_company_web_site", 'name':"company_web_site", 'style':"width: 100%", 'type':"text", 'placeholder':"(e.x) https://myprint.uz"
+	}))
+	company_address  = forms.CharField(widget=forms.TextInput(attrs={
+		'class':"form-control input-lg", 'id':"id_company_address", 'name':"company_address", 'style':"width: 100%", 'type':"text", 'placeholder':"(e.x) 32A, Chilonzor 14, Tashkent city"
+	}))
+	 
+	class Meta:
+		model = UserInfo
+		fields = ['image', 'full_name', 'email', 'address', 'company', 'company_web_site', 'company_address', ]
 
 
 # class RegisterForm(forms.ModelForm):

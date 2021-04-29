@@ -108,7 +108,7 @@ def create_password_for_account(request, key):
 				user.save()
 				custom_token.delete()
 				login(request, user)
-				return redirect('/')
+				return redirect('users:user-info-2nd-step', user.pk)
 			except Exception as e:
 				messages.error(request, _(f"Something went wrong, {e}"))
 				form = PasswordCreateForm()
@@ -245,41 +245,43 @@ def reset_password_new_password(request, key):
 
 
 @login_required
-def signup_step_2_user_info(request):
+def signup_step_2_user_info(request, pk):
 	template_name='registration/signup-step-2-user_info.html'
-	user = request.user
+	user = User.objects.get(pk=pk)
 	instance=None
 	try:
 		instance = UserInfo.objects.get(phone_number=user)
 	except Exception as e:
 		messages.error(request, _(f"Something went wrong, {e}"))
 		return redirect("users:login")
-	form = UserInfoForm()
+	form = UserInfoForm(instance=instance)
 	if request.method=='POST':
-		form = UserInfoForm(request.POST, request.FILES, isinstance=instance)
+		form = UserInfoForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-			# image            = form.cleaned_data['image']         
-			# full_name        = form.cleaned_data['full_name']
-			# phone_number     = form.cleaned_data['phone_number']
-			# email            = form.cleaned_data['email']
-			# address          = form.cleaned_data['address']
-			# company          = form.cleaned_data['company']
-			# company_web_site = form.cleaned_data['company_web_site']
-			# company_address  = form.cleaned_data['company_address']
-
-			# object, created = UserInfo.objects.get_or_create(
-			# 	image            = image,         
-			# 	full_name        = full_name,
-			# 	phone_number     = user,
-			# 	email            = email,
-			# 	address          = address,
-			# 	company          = company,
-			# 	company_web_site = company_web_site,
-			# 	company_address  = company_address
-			# )
-	context={'form': form}
+			messages.success(request, _("Registration successfully completed, \nWellcom to our membership :)"))
+			return redirect('users:user-profile')
+		else:
+			messages.error(request, _("Something went wrong, check and try again"))
+	context={'form': form, 'phone_number': user.phone_number}
 	return render(request, template_name, context)
+
+
+from django.views.generic import UpdateView
+
+class SignUpStep2_UserInfo(LoginRequiredMixin, UpdateView):
+	model = UserInfo
+	form_class = UserInfoForm
+	template_name='registration/signup-step-2-user_info.html'
+	success_url='users-user-profile'
+
+	# def get_context_data(self, **kwargs):
+	# 	context = super().get_context_data(**kwargs)
+	# 	user = User.objects.get(pk=kwargs.get('pk'))
+	# 	context["phone_number"] = user.phone_number
+	# 	return context
+	
+	
 
 
 

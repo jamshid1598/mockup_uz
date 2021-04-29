@@ -7,6 +7,9 @@ from .views import (
     validation_phonenumber_view,
     phone_verification_view,
     create_password_for_account,
+    
+    signup_step_2_user_info,
+    SignUpStep2_UserInfo,
     logout_view,
 
     reset_password_view,
@@ -31,6 +34,8 @@ urlpatterns = [
     path('phone/number/', validation_phonenumber_view, name='signup'),
     path('phone/confirmation/<str:key>/', phone_verification_view, name='phone-confirmation'),
     path('create/password/<str:key>/', create_password_for_account, name='create-password'),
+
+    path('extra/info/2nd-step/<int:pk>/user/', signup_step_2_user_info, name='user-info-2nd-step'),
 
     path('reset/account/password/', reset_password_view, name="reset-password"),
     path('reset/account/password/confirmation/<str:key>/', reset_password_confirmation_view, name="reset-password-confirmation"),  
