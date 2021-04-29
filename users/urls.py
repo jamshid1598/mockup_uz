@@ -1,11 +1,17 @@
 from django.urls import path
 from .views import (
+    UserProfile,
+
     login_view,
     # ValidatePhoneNumberView, 
     validation_phonenumber_view,
     phone_verification_view,
     create_password_for_account,
     logout_view,
+
+    reset_password_view,
+    reset_password_confirmation_view,
+    reset_password_new_password,
 )
 
     # RegisterView,
@@ -17,12 +23,16 @@ from .views import (
 app_name = "users"
 
 urlpatterns = [
-    path('login/', login_view, name='login'),
+    path('profile/', UserProfile.as_view(), name='user-profile'),
 
-    path('phone/number/', validation_phonenumber_view, name='phone-number'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name="logout"),
+
+    path('phone/number/', validation_phonenumber_view, name='signup'),
     path('phone/confirmation/<str:key>/', phone_verification_view, name='phone-confirmation'),
     path('create/password/<str:key>/', create_password_for_account, name='create-password'),
-    path('logout/', logout_view, name="logout"),
-    # path('signup/', RegisterView.as_view(), name="signup"),
-    # path('dashboard/', DashboardView.as_view(), name="dashboard"),    
+
+    path('reset/account/password/', reset_password_view, name="reset-password"),
+    path('reset/account/password/confirmation/<str:key>/', reset_password_confirmation_view, name="reset-password-confirmation"),  
+    path('reset/password/change_password/<str:key>/', reset_password_new_password, name='reset-password-change-password'),
 ]

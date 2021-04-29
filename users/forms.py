@@ -8,7 +8,7 @@ from phonenumber_field.formfields import PhoneNumberField
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-from .models import User
+from .models import User, UserInfo
 
 
 
@@ -22,29 +22,28 @@ class ValidatePhoneNumberForm(forms.Form):
             raise forms.ValidationError(_('Another user with this phone number is allready exists, \nTry diffrent phone number'))
         return phone_number
 
-        
 class ConfirmationForm(forms.Form):
-    confirmation_code = forms.CharField(max_length=4, widget=forms.NumberInput(attrs={
+    confirmation_code = forms.CharField(widget=forms.NumberInput(attrs={
         'class':"form-control input-lg", 'id':"id_confirmation_code", 'name':"confirmation_code", 'style':"width: 100%", 'type':"number", 'placeholder':"4 digit confirmation code",
     }))
 
     def clean_confirmation_code(self):
         code = self.data.get('confirmation_code')
-        if len(code) > 4 or len(code) < 4:
-            raise forms.ValidationError(_('Confirmation code didn\'t match'))
+        if not len(code) == 4:
+            # print("Code", type(code))
+            raise forms.ValidationError(_('Confirmation code must contains 4 digit'))
         return code
 
-
-class PasswordCreateForm(UserCreationForm):
+class PasswordCreateForm(forms.Form):
+    phone_number = PhoneNumberField(widget=forms.TextInput(attrs={
+        'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"hidden"
+    }))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class':"form-control input-lg", 'id':"id_password1", 'name':"password1", 'style':"width: 100%", 'type':"password" 
     }))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'class':"form-control input-lg", 'id':"id_password2", 'name':"password2", 'style':"width: 100%", 'type':"password" 
     }))
-    class Meta:
-        model = User
-        fields = ['phone_number', 'password1', 'password2']
 
     def clean_password1(self):
         password1 = self.data.get('password1')
@@ -62,6 +61,23 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class':"form-control input-lg", 'id':"id_password", 'name':"password", 'style':"width: 100%", 'type':"password" 
     }))
+
+
+class PasswordResetForm(forms.Form):
+    phone_number = PhoneNumberField(widget=forms.TextInput(
+        attrs={'class':"form-control input-lg", 'id':"id_phone_number", 'name':"phone_number", 'style':"width: 100%", 'type':"text", 'placeholder':"phone number"}))
+
+    # def clean_phone_number(self):
+    #     phone_number = self.data.get('phone_number')
+    #     if not User.objects.filter(phone_number=phone_number).exists():
+    #         raise forms.ValidationError(_('This phone number haven\'t been registered yet'))
+    #     return phone_number
+
+
+class UserInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserInfo
+        fields = '__all__'
 
 
 

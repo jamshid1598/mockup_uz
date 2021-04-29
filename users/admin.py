@@ -1,10 +1,15 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User
+from .models import User, UserInfo
 
+
+class UserInfoStackedInline(admin.StackedInline):
+    model = UserInfo
+    max_num=1
 
 class UserAdmin(BaseUserAdmin):
+    inlines = [UserInfoStackedInline, ]
     fieldsets = (
         ('User Info', {'fields': ('phone_number', 'last_login', 'phone_number_verified', 'change_pw',)}),
         ('User Permissions', {'fields': (

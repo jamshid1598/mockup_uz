@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+	{% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style type="text/css"></style>
+  
+  {% endblock css %}
+
+	{% block body %}
+
+    <section class="container pt-5 pb-5" style="min-height: 80vh;">
+      <div class="row pt-5 mt-3">
+        
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-0"> 
+          <div class="card text-center pt-4 m-0">
+          <img src="{% static 'img/user.svg' %}" width="150" height="150" class="m-auto">
+        
+          <div class="row pl-3 pr-3 mt-3">
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-user" style="font-size: 30px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.full_name|default_if_none:"" }}</h6></div>
+
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-envelope" style="font-size: 25px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.email|default_if_none:"" }}</h6></div>
+
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-phone" style="font-size: 30px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.phone_number }}</h6></div>
+          </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8"> 
+          <div class="row" id="ads">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+              <div class="card rounded profile-card">
+                  <div class="card-image">
+                      <span class="card-notify-year">Free</span>
+                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
+                  </div>
+                  <div class="card-body text-center">
+                      <div class="ad-title m-auto">
+                          <h5>Honda Accord LX</h5>
+                      </div>
+                    </div>
+                      <div class="profile-content">
+                        <ul class="social-link">
+                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        
+      </div>
+        
+    </section>
+
+
+
+      <!-- <div class="fakeLoader"></div> -->
+      <button class="btn btn-outline-danger btn-top" title="ScrollTop"><i class="fa fa-angle-up"></i></button>
+
+
+    <!-- <div class="fakeLoader"></div> -->
+    <button class="btn btn-outline-danger btn-top" title="ScrollTop"><i class="fa fa-angle-up"></i></button>
+
+  {% endblock body %}
+
+	{% block js %}
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fakeLoader.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+
+    </script>
+  {% endblock js %}
