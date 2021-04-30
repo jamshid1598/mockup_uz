@@ -65,6 +65,14 @@ class UserInfo(models.Model):
             return self.full_name + " | " + str(self.phone_number.phone_number)
         else:
             return str(self.phone_number.phone_number)
+            
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url=''
+        return url
 
 def post_save_user_receiver(sender, instance, created, **kwargs):
     phone_number = instance

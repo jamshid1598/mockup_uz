@@ -90,8 +90,8 @@ class UserInfoForm(forms.ModelForm):
 	company          = forms.CharField(widget=forms.TextInput(attrs={
 		'class':"form-control input-lg", 'id':"id_company", 'name':"company", 'style':"width: 100%", 'type':"text", 'placeholder': '(e.x) Marvel Creative'
 	}))
-	company_web_site = forms.CharField(widget=forms.TextInput(attrs={
-		'class':"form-control input-lg", 'id':"id_company_web_site", 'name':"company_web_site", 'style':"width: 100%", 'type':"text", 'placeholder':"(e.x) https://myprint.uz"
+	company_web_site = forms.URLField(widget=forms.URLInput(attrs={
+		'class':"form-control input-lg", 'id':"id_company_web_site", 'name':"company_web_site", 'style':"width: 100%", 'type':"link", 'placeholder':"(e.x) https://myprint.uz"
 	}))
 	company_address  = forms.CharField(widget=forms.TextInput(attrs={
 		'class':"form-control input-lg", 'id':"id_company_address", 'name':"company_address", 'style':"width: 100%", 'type':"text", 'placeholder':"(e.x) 32A, Chilonzor 14, Tashkent city"

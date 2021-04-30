@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.contrib import messages 
-from django.http import  JsonResponse
+from django.http import  JsonResponse, HttpResponseRedirect
 from django.db.models import F, Q, When, Value, Case
+from django.contrib.auth.decorators import login_required
 from django.views.generic import (
 	ListView,
 	DetailView,
@@ -9,6 +10,7 @@ from django.views.generic import (
 	CreateView,
 	DeleteView,
 )
+from django.urls import reverse
 import json
 
 from product.models import (
@@ -153,8 +155,19 @@ class UseFullListView(ListView):
 	model = UseFullCategory
 
 
-
-def customer_profile(request, *args, **kwargs):
-	template_name = "index.html"
-	return render(request, template_name, {})
-
+@login_required
+def mockup_like(request):
+	data = json.loads(request.body)
+	slug = data['slug']
+	print('slug', slug)
+	try:
+		obj = Product.objects.get(slug=slug)
+	except Exception as e:
+		obj=None
+	if obj and obj.liked.filter(id=request.user.id).exists():
+		obj.liked.remove(request.user)
+		return JsonResponse({"success":"Unliked"}, safe=False, status=200)
+	elif obj and not obj.liked.filter(id=request.user.id).exists():
+		obj.liked.add(request.user)
+		return JsonResponse({"success":"Liked"}, safe=False, status=200)
+	return JsonResponse({"success":"Something went wrong :("}, safe=False, status=200)

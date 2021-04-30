@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.views.generic import TemplateView, FormView
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
@@ -34,6 +33,8 @@ from .models import (
 	UserInfo,
 )
 from .session_key import current_user_session_id
+
+from product.models import Product
 
 
 def validation_phonenumber_view(request):
@@ -154,7 +155,7 @@ def login_view(request):
 def logout_view(request):
 	logout(request)
 	messages.info(request, "Logged out successfully!")
-	return redirect("/")
+	return redirect("users:login")
 	
 
 
@@ -256,7 +257,7 @@ def signup_step_2_user_info(request, pk):
 		return redirect("users:login")
 	form = UserInfoForm(instance=instance)
 	if request.method=='POST':
-		form = UserInfoForm(request.POST, request.FILES)
+		form = UserInfoForm(request.POST, request.FILES, instance = instance)
 		if form.is_valid():
 			form.save()
 			messages.success(request, _("Registration successfully completed, \nWellcom to our membership :)"))
@@ -267,13 +268,13 @@ def signup_step_2_user_info(request, pk):
 	return render(request, template_name, context)
 
 
-from django.views.generic import UpdateView
+# from django.views.generic import UpdateView
 
-class SignUpStep2_UserInfo(LoginRequiredMixin, UpdateView):
-	model = UserInfo
-	form_class = UserInfoForm
-	template_name='registration/signup-step-2-user_info.html'
-	success_url='users-user-profile'
+# class SignUpStep2_UserInfo(LoginRequiredMixin, UpdateView):
+# 	model = UserInfo
+# 	form_class = UserInfoForm
+# 	template_name='registration/signup-step-2-user_info.html'
+# 	success_url='users-user-profile'
 
 	# def get_context_data(self, **kwargs):
 	# 	context = super().get_context_data(**kwargs)
@@ -291,7 +292,8 @@ class UserProfile(LoginRequiredMixin, View):
 	def get(self, request, *args, **kwargs):
 		user=request.user
 		user_info = UserInfo.objects.get(phone_number=user)
-		self.context={'object': user_info}
+		object_list = Product.objects.filter(liked__id=request.user.id)
+		self.context={'object': user_info, 'object_list': object_list}
 		return render(request, self.template_name, self.context)
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, self.context)

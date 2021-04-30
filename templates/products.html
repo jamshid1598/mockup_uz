@@ -144,7 +144,11 @@
 								<ul class="social-link">
 									<a href="{{ obj.fileURL }}" onclick="core_method_js(this)" data-slug="{{ obj.slug }}" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
 									<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-									<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+									{% if request.user in obj.liked.all %}
+										<a  onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i style='color: red;' class="fa fa-heart fa-2x"></i></a>
+									{% else %}
+										<a onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+									{% endif %}
 								</ul>
 							</div>
 						</div>
@@ -216,7 +220,11 @@
 									<ul class="social-link">
 										<a href="{{ obj.fileURL }}" onclick="core_method_js(this)" data-slug="{{ obj.slug }}" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
 										<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-										<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+										{% if request.user in obj.liked.all %}
+											<a  onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i style='color: red;' class="fa fa-heart fa-2x"></i></a>
+										{% else %}
+											<a onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+										{% endif %}
 									</ul>
 								</div>
 							</div>

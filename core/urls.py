@@ -8,6 +8,8 @@ from .views import (
 
     aboutus,
     UseFullListView,
+
+    mockup_like,
 )
 app_name = "core"
 
@@ -22,5 +24,7 @@ urlpatterns = [
     path('ajax/download_counter/', download_counter, name='download_counter'),
 
     path("about-us/", aboutus, name="aboutus"),
-    path("usefull-page/", UseFullListView.as_view(), name="usefull"),    
+    path("usefull-page/", UseFullListView.as_view(), name="usefull"),   
+
+    path('ajax/like/mockup/', mockup_like, name='likes'), 
 ]

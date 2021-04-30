@@ -146,7 +146,7 @@
 					<div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 p-3">
 						<div class="card rounded profile-card">
 							<div class="card-image">
-								<span class="card-notify-badge ml-3">Low KMS</span>
+								<span class="card-notify-badge ml-3">{{ obj.category }}</span>
 
 								<!-- Price -->
 								{% if obj.free %}
@@ -177,7 +177,12 @@
 								<ul class="social-link">
 									<a href="{{ obj.fileURL }}" onclick="core_method_js(this)" data-slug="{{ obj.slug }}" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
 									<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-									<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+									
+									{% if request.user in obj.liked.all %}
+										<a  onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i style='color: red;' class="fa fa-heart fa-2x"></i></a>
+									{% else %}
+										<a onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+									{% endif %}
 								</ul>
 							</div>
 						</div>
@@ -262,7 +267,11 @@
 									<ul class="social-link">
 										<a href="{{ obj.fileURL }}" onclick="core_method_js(this)" data-slug="{{ obj.slug }}" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
 										<a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-										<a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+										{% if request.user in obj.liked.all %}
+											<a  onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i style='color: red;' class="fa fa-heart fa-2x"></i></a>
+										{% else %}
+											<a onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+										{% endif %}
 									</ul>
 								</div>
 							</div>
@@ -292,5 +301,12 @@
 				disableOnInteraction:false         
 			}                       
 		});
+
+		$(document).ready(function(){
+            $('.nav').click(function(e){
+                  e.preventDefault();
+                  $("#content").load($(this).attr('href'));
+            });
+      });
 		</script>
 	{% endblock js %}

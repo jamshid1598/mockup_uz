@@ -9,7 +9,7 @@ from .views import (
     create_password_for_account,
     
     signup_step_2_user_info,
-    SignUpStep2_UserInfo,
+    # SignUpStep2_UserInfo,
     logout_view,
 
     reset_password_view,

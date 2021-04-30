@@ -71,6 +71,11 @@ class ProductAdmin(admin.ModelAdmin):
                 'price', 'discount', 'paid', 'free',
             )
         }),
+        ('Likes', {
+            'fields' : (
+                'liked',
+            )
+        }),
     )
 
     formfield_overrides = {

@@ -20,8 +20,11 @@
         
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-0"> 
           <div class="card text-center pt-4 m-0">
+            {% if object.imageURL != '' %}
+            <img src="{{ object.imageURL }}" width="150" height="150" class="m-auto">
+            {% else %}
           <img src="{% static 'img/user.svg' %}" width="150" height="150" class="m-auto">
-        
+            {% endif %}
           <div class="row pl-3 pr-3 mt-3">
             <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-user" style="font-size: 30px;"></i></div>
             <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.full_name|default_if_none:"" }}</h6></div>
@@ -31,11 +34,75 @@
 
             <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-phone" style="font-size: 30px;"></i></div>
             <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.phone_number }}</h6></div>
+
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-phone" style="font-size: 30px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.address|default_if_none:"" }}</h6></div>
+
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-phone" style="font-size: 30px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.company|default_if_none:"" }}</h6></div>
+
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-phone" style="font-size: 30px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.company_web_site|default_if_none:"" }}</h6></div>
+
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pl-0 pr-0 border p-2"><i class="fa fa-phone" style="font-size: 30px;"></i></div>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border"><h6 class="pt-3 font-weight-bold">{{ object.company_address|default_if_none:"" }}</h6></div>
+
+            <a class='btn-blue-grey' href="{% url 'users:user-info-2nd-step' object.pk %}">Change Info</a>
+
           </div>
             </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8"> 
           <div class="row" id="ads">
+            
+
+            {% for obj in object_list %}
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
+                <div class="card rounded profile-card">
+                    <div class="card-image">
+                       
+                        <!-- Price -->
+                        {% if obj.free %}
+                          <span class="card-notify-year">Free</span>
+                        {% elif obj.discount %}
+                          <small><del>{{ obj.price }}</del></small>
+                          <span class="card-notify-year">{{ obj.discount }}</span>
+                        {% elif obj.price %}
+                          <span class="card-notify-year">{{ obj.price }}</span>
+                        {% else %}
+                          <span class="card-notify-year">Free</span>
+                        {% endif %}
+                        <!-- End Price -->
+
+                        {% for image in obj.product_image.all %}       
+                          {% if forloop.counter == 1 %}	
+                            <img class="img-flu" src="{{ image.imageURL }}" width="100%" height="210" alt="Alternate Text" />
+                          {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="ad-title m-auto">
+                            <h5>{{ obj.name }}</h5>
+                        </div>
+                      </div>
+                        <div class="profile-content">
+                          <ul class="social-link">
+                            <a href="{{ obj.fileURL }}" onclick="core_method_js(this)" data-slug="{{ obj.slug }}" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
+                            <a href="{% url 'core:detail' obj.slug %}" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
+                            {% if request.user in obj.liked.all %}
+                              <a  onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i style='color: red;' class="fa fa-heart fa-2x"></i></a>
+                            {% else %}
+                              <a onclick="like_unlike(this)" data-slug="{{ obj.slug }}" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+
+
+
+<!-- 
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
               <div class="card rounded profile-card">
                   <div class="card-image">
@@ -155,27 +222,9 @@
                       </ul>
                   </div>
               </div>
-          </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-3">
-              <div class="card rounded profile-card">
-                  <div class="card-image">
-                      <span class="card-notify-year">Free</span>
-                      <img class="img-flu" src="{% static 'img/product/6.jpg' %}" width="100%" height="185" alt="Alternate Text" />
-                  </div>
-                  <div class="card-body text-center">
-                      <div class="ad-title m-auto">
-                          <h5>Honda Accord LX</h5>
-                      </div>
-                    </div>
-                      <div class="profile-content">
-                        <ul class="social-link">
-                          <a href="#!" class="text-white"><i class="fa fa-download fa-2x mr-2"></i></a>
-                          <a href="detail.html" class="text-white heartBtn"><i class="fa fa-eye fa-2x mr-2 "></i></a>
-                          <a href="#!" class="text-white heartIcon"><i class="fa fa-heart fa-2x"></i></a>
-                      </ul>
-                  </div>
-              </div>
-          </div>
+          </div> -->
+
+
           </div>
         </div>
       </div>

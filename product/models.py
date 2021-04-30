@@ -69,7 +69,7 @@ class Product(models.Model):
     downloaded = models.SmallIntegerField(default=0)
     # viewed = models.SmallIntegerField(default=0)
 
-    liked = models.ManyToManyField(User, related_name="user_likes",)
+    liked = models.ManyToManyField(User, blank=True, null=True, related_name="user_likes",)
     tags  = models.ManyToManyField(Tag, related_name="product_tags", verbose_name="Product Tags")
 
     published_at = models.DateTimeField(auto_now_add=True)
@@ -106,6 +106,10 @@ class Product(models.Model):
     @property
     def views_count(self):
         return UserViews.objects.filter(mockup=self).count()
+    
+    @property
+    def total_like(self):
+        return self.liked.count()
 
 
 class Image(models.Model):
