@@ -2,42 +2,30 @@ from django.urls import path
 from .views import (
     UserProfile,
 
-    login_view,
-    # ValidatePhoneNumberView, 
-    validation_phonenumber_view,
-    phone_verification_view,
-    create_password_for_account,
-    
-    signup_step_2_user_info,
-    # SignUpStep2_UserInfo,
-    logout_view,
+    PhoneNumberView,
+    PhoneNumberVerificationView,
+    SignUpView,
+    LoginView,
+    LogOutView,
 
-    reset_password_view,
-    reset_password_confirmation_view,
-    reset_password_new_password,
+    password_reset_phonenumber,
+    password_reset_verification,
+    password_reset_newpassword,
 )
-
-    # RegisterView,
-    # PhoneVerificationView,
-    # LoginView,
-    # DashboardView,
-
 
 app_name = "users"
 
 urlpatterns = [
     path('profile/', UserProfile.as_view(), name='user-profile'),
 
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name="logout"),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogOutView.as_view(), name="logout"),
+    path('phone/number/', PhoneNumberView.as_view(), name='phone-number-view'),
+    path('phone/confirmation/<str:key>/', PhoneNumberVerificationView.as_view(), name='phone-verification'),
+    path('create/account/<str:key>/', SignUpView.as_view(), name='signup-view'),
 
-    path('phone/number/', validation_phonenumber_view, name='signup'),
-    path('phone/confirmation/<str:key>/', phone_verification_view, name='phone-confirmation'),
-    path('create/password/<str:key>/', create_password_for_account, name='create-password'),
+    path('reset/password/phonenumber/', password_reset_phonenumber, name='reset-password-phonenumber'),
+    path('reset/password/verification/<str:key>/', password_reset_verification, name='reset-password-verification'),
+    path('reset/password/newpassword/<str:key>/', password_reset_newpassword, name='reset-password-newpassword'),
 
-    path('extra/info/2nd-step/<int:pk>/user/', signup_step_2_user_info, name='user-info-2nd-step'),
-
-    path('reset/account/password/', reset_password_view, name="reset-password"),
-    path('reset/account/password/confirmation/<str:key>/', reset_password_confirmation_view, name="reset-password-confirmation"),  
-    path('reset/password/change_password/<str:key>/', reset_password_new_password, name='reset-password-change-password'),
 ]

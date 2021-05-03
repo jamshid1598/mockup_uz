@@ -181,3 +181,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_root/'
 
 LOGIN_URL = 'users:login'
+
+
+AUTHY_KEY=config('AUTHY_KEY')
+AUTHY_EMAIL=config('AUTHY_EMAIL')
