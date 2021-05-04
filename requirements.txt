@@ -7,10 +7,13 @@ defusedxml==0.7.1
 Django==3.1.5
 django-allauth==0.44.0
 django-decouple==2.1
+django-phonenumber-field==5.1.0
 django-tinymce4-lite==1.8.0
 idna==2.10
 jsmin==2.2.2
 oauthlib==3.1.0
+phonenumbers==8.12.21
+phonenumberslite==8.12.21
 Pillow==8.1.0
 pycparser==2.20
 PyJWT==2.0.1
