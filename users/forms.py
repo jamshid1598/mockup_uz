@@ -6,8 +6,8 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm, Authenti
 from django.contrib.auth import authenticate
 from phonenumber_field.formfields import PhoneNumberField
 from django.contrib.auth import get_user_model
-# User = get_user_model()
-from .models import User
+User = get_user_model()
+# from .models import User
 
 # from .models import User #, UserInfo
 
