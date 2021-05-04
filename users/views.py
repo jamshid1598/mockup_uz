@@ -15,6 +15,7 @@ from django.contrib.auth import get_user_model
 
 import json
 User = get_user_model()
+# from .models import User
 
 from .forms import (
 	PhoneNumberForm,

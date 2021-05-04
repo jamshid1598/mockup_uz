@@ -8,7 +8,7 @@ from phonenumber_field.formfields import PhoneNumberField
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-from .models import User #, UserInfo
+# from .models import User #, UserInfo
 
 
 
