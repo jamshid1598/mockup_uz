@@ -39,14 +39,17 @@
 						{% endif %}
 						<!-- Messages -->
 
-						<form class="account-register form-narrow" id="signup_form" method="POST" action="" >
+						<form class="account-register form-narrow" enctype="multipart/form-data" id="signup_form" method="POST" action="" >
 							<div class="row">
 								<div class="col text-center title">
-									<h1 class="text-dark">{% trans 'Create Account' %}</h1>
+									<h1 class="text-dark">{% trans 'Update Profile' %}</h1>
 								</div>
 							</div>
 							{% csrf_token %}
-                            <div class="form-group{% if form.full_name.errors %} has-error{% endif %}">
+
+                           {{ form.as_p }}
+
+                            <!-- <div class="form-group{% if form.full_name.errors %} has-error{% endif %}">
 								<label class="control-label" for="id_full_name">{% trans 'Full Name' %}</label>
 								<div class="form-inline">
 									<input class="form-control input-lg" id="id_full_name" name="full_name" style="width: 100%" type="text" placeholder='(e.x) Jhone Doe' required />
@@ -73,10 +76,10 @@
 									<input class="form-control input-lg" id="id_password2" name="password2" style="width: 100%" type="password" required />
 									<div class="error-block">{{ form.password2.errors }}</div>
 							  	</div>
-							</div>
+							</div> -->
 							<div class="row justify-content-start mt-4 pb-4">
 								<div class="col">
-									<button type="submit" class="btn mt-4 w-100 register_btn">{% trans 'Set Password' %}</button>
+									<button type="submit" class="btn mt-4 w-100 register_btn">{% trans 'Update' %}</button>
 								</div>
 							</div>
 						</form>

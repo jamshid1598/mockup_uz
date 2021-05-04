@@ -27,6 +27,8 @@ from .forms import (
 	PasswordResetVerificationForm,
 	PasswordResetNewpasswordForm,
 
+	ChangePasswordForm,
+
 )
 from .send_sms import send_sms
 from .confirmation_code_generator import code_generator
@@ -265,19 +267,6 @@ class LogOutView(LoginRequiredMixin, View):
         logout(request)
         messages.info(request, _("You are no longer logged in. Bye bye!"))
         return redirect("users:login")
-	
-
-class UserProfile(LoginRequiredMixin, View):
-	template_name='myprofile.html'
-	context={}
-	def get(self, request, *args, **kwargs):
-		user=request.user
-		user_info = User.objects.get(phone_number=user)
-		object_list = Product.objects.filter(liked__id=request.user.id)
-		self.context={'object': user_info, 'object_list': object_list}
-		return render(request, self.template_name, self.context)
-	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, self.context)
 
 
 
@@ -398,3 +387,30 @@ def password_reset_newpassword(request, key):
 		# messages.error(request, _(""))
 	context = {'form':form, 'phone_number':custom_token.phone_number}
 	return render( request, template_name, context )
+
+
+@login_required
+def change_password(request, pk):
+	template_name = 'registration/change-password.html'
+	user_instance = User.objects.get(pk=pk)
+	context={}
+	form=ChangePasswordForm()
+	if request.method == 'POST':
+		form = ChangePasswordForm(request.POST)
+		if form.is_valid():
+			current_password = form.cleaned_data.get('current_password')
+			new_password1 = form.cleaned_data.get('new_password1')
+
+			user = authenticate(phone_number=user_instance.phone_number, password=current_password)
+			 
+			if user:
+				user_instance.set_password(new_password1)
+				messages.success(request, _("Password changed successfully"))
+				user_instance.save()
+				return redirect("users:login")
+			else:
+				messages.error(request, _("Current password didn't match, please try again"))
+		else:
+			messages.error(request, _("Something went wrong, please check and try again"))
+	context['form'] = form
+	return render(request, template_name, context)

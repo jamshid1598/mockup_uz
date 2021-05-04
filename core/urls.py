@@ -10,6 +10,9 @@ from .views import (
     UseFullListView,
 
     mockup_like,
+
+    UserProfile,
+    UpdateUserProfileView,
 )
 app_name = "core"
 
@@ -27,4 +30,7 @@ urlpatterns = [
     path("usefull-page/", UseFullListView.as_view(), name="usefull"),   
 
     path('ajax/like/mockup/', mockup_like, name='likes'), 
+
+    path('profile/', UserProfile.as_view(), name='user-profile'),
+    path('update/profile/<int:pk>/', UpdateUserProfileView.as_view(), name='update-profile'),
 ]

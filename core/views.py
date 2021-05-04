@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.http import  JsonResponse, HttpResponseRedirect
 from django.db.models import F, Q, When, Value, Case
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import ugettext as _
 from django.views.generic import (
 	ListView,
 	DetailView,
@@ -11,7 +13,9 @@ from django.views.generic import (
 	DeleteView,
 )
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 import json
+User=get_user_model()
 
 from product.models import (
 	UserViews,
@@ -25,6 +29,9 @@ from product.models import (
 from .models import (
 	UseFull,
 	UseFullCategory,
+)
+from users.forms import (
+	UpdateProfileForm,
 )
 # Create your views here.
 
@@ -149,7 +156,6 @@ def aboutus(request, *args, **kwargs):
 	return render(request, template_name, {})
 
 
-
 class UseFullListView(ListView):
 	template_name = 'usefull.html'
 	model = UseFullCategory
@@ -171,3 +177,29 @@ def mockup_like(request):
 		obj.liked.add(request.user)
 		return JsonResponse({"success":"Liked"}, safe=False, status=200)
 	return JsonResponse({"success":"Something went wrong :("}, safe=False, status=200)
+
+
+class UserProfile(LoginRequiredMixin, ListView):
+	model=Product
+	template_name='myprofile.html'
+
+	def get_queryset(self):
+		qs =  super().get_queryset()
+		return qs.filter(liked__pk=self.request.user.pk)
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['user_info'] = User.objects.get(pk=self.request.user.pk)
+		return context
+
+
+class UpdateUserProfileView(LoginRequiredMixin, UpdateView):
+	template_name='update-myprofile.html'
+	model=User
+	form_class=UpdateProfileForm
+
+	def get_success_url(self):
+		messages.success(self.request, _("User info updated successfully"))
+		return reverse('core:user-profile')
+
+	
