@@ -15,7 +15,8 @@ from django.views.generic import (
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 import json
-User=get_user_model()
+# User=get_user_model()
+from users.models import User
 
 from product.models import (
 	UserViews,
