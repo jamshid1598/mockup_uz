@@ -256,7 +256,7 @@ class LoginView(View):
 				else:
 					messages.warning(request, _('Phone number or password didn\'t match, please try again' ))
 			else:
-				messages.error(_('Phone number or password didn\'t match, please try again' ))
+				messages.error(request, _('Phone number or password didn\'t match, please try again' ))
 				# form=LoginForm()
 		context['form']=form
 		return render(request, self.template_name, context)
