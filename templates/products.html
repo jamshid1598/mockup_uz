@@ -47,38 +47,38 @@
 
 	{% block body %}
 
-		<section class="container-fluid pt-5">
-			<div class="container pl-0 pr-0 pt-5 pb-5">
-				<div class="row border pt-2 pb-2">
-					<div class="col-12 col-12 col-md-3 col-lg-3 col-xl-2 pt-4 pb-1 pl-2 mb-4 text-center">
-						<div class="dropdown">
-							<a href="#!" class="text-decoration-none h4 pl-1 dropbtn border pt-2 pb-2 pr-2 pl-3">Kategoriya<i class="fa fa-angle-down"></i></a>
-							<div class="dropdown-content" style="z-index: 9999; margin-top: 7px;">
+	<section class="container-fluid pt-5">
+		<div class="container pl-0 pr-0 pt-5">
+			<div class="row border pt-2 pb-2">
+				<div class="col-12 col-md-4 col-lg-3 col-xl-2 pt-4 pb-1 pl-2 mb-4 text-center">
+					<div class="dropdown">
+						<a href="#!" class="text-decoration-none h4 dropbtn border p-2">Kategoriya<i class="fa fa-angle-down"></i></a>
+						<div class="dropdown-content" style="z-index: 9999; margin-top: 7px;">
 
-								{% for category in category_list %}
-									<a href="{% url 'core:mockup' category.slug %}" class="text-decoration-none text-dark border-bottom pt-2 pb-2">{{ category.name }}</a>
-								{% endfor %}
-
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-12 col-md-9 col-lg-9 col-xl-10 pt-3 pb-2 pl-2 text-center">
-						<div class="row">
-							
 							{% for category in category_list %}
-								{% if category.active %}
-									<div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-1 pl-0 pr-0 text-center"><a class="text-dark h6 m-auto text-decoration-none" href="{% url 'core:mockup' category.slug %}">
-										<img src="{{ category.imageURL }}" width="30" height="30"  alt=""><h6> {{ category.name }} </h6></a>
-									</div>
-								{% endif %}
+								<a href="{% url 'core:home' category.slug %}" class="text-decoration-none text-dark border-bottom pt-2 pb-2">{{ category.name }}</a>
 							{% endfor %}
 
 						</div>
 					</div>
 				</div>
+				<div class="col-12 col-md-8 col-lg-9 col-xl-10 pt-3 pb-2 pl-2 text-center">
+					<div class="row">
+						
+						{% for category in category_list %}
+							{% if category.active %}
+								<div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-1 pl-0 pr-0 text-center"><a class="text-dark h6 m-auto text-decoration-none" href="{% url 'core:home' category.slug %}">
+									<img src="{{ category.imageURL }}" width="30" height="30"  alt=""><h6>{{ category.name }}</h6></a>
+								</div>
+							{% endif %}
+						{% endfor %}
+
+					</div>
+				</div>
 			</div>
-		</section>
-		
+		</div>
+	</section>
+
 		<!-- New section and search form -->
 		<section class="container pl-0 pr-0 searchSection pt-5 pb-5">
 			<div class="container">
@@ -137,7 +137,7 @@
 							</div>
 							<div class="card-body text-center">
 								<div class="ad-title m-auto">
-									<h5>{{ obj.name }}</h5>
+									<h6>{{ obj.name|truncatechars:20 }}</h6>
 								</div>
 							</div>
 							<div class="profile-content">
@@ -213,7 +213,7 @@
 								</div>
 								<div class="card-body text-center">
 									<div class="ad-title m-auto">
-										<h5>{{ obj.name }}</h5>
+										<h6>{{ obj.name|truncatechars:20 }}</h6>
 									</div>
 								</div>
 								<div class="profile-content">

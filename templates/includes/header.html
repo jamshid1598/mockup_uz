@@ -1,25 +1,25 @@
 {% load static %}
 {% load i18n %}
 
-<header class="container-fluid pl-0 pr-0 fixed-top bg-light" style="height: 8vh;">
+<header class="container-fluid pl-0 pr-0 fixed-top bg-light" >
 	<nav class="container navbar navbar-expand-lg navbar-light text-center pl-0 pr-0">
 		<a class="navbar-brand pl-2" href="/"><img src="{% static 'img/logo.svg' %}" class="headerLogo"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler m-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ml-auto pt-2">
 				<li class="nav-item">
-					<a class="nav-link active h4  bestFont2 text-dark pr-3" aria-current="page" href="/">{% trans 'Asosiy' %}</a>
+					<a class="nav-link active h5  bestFont2 text-dark pr-3 pl-3" aria-current="page" href="/">{% trans 'Asosiy' %}</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active h4  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:aboutus' %}">{% trans 'Biz haqimizda' %}</a>
+					<a class="nav-link active h5  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:aboutus' %}">{% trans 'Biz haqimizda' %}</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active h4  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:mockup' %}">{% trans 'Kategoriya' %}</a>
+					<a class="nav-link active h5  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:mockup' %}">{% trans 'Kategoriya' %}</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active h4  bestFont2 text-dark pr-5 pl-3" href="{% url 'core:usefull' %}">{% trans 'Foydali' %}</a>
+					<a class="nav-link active h5  bestFont2 text-dark pr-3 pl-3" href="{% url 'core:usefull' %}">{% trans 'Foydali' %}</a>
 				</li>
 			</ul>
 			<form class="socialIconHeader form-inline justify-content-center pb-3 pt-3">

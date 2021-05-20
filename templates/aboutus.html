@@ -8,6 +8,42 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/fakeLoader.min.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 		
+	<style>
+
+@media (max-width:576px) {
+    		
+			.imageaboutas img{
+				width: 500px;
+			}  
+						   }
+		
+					  @media (min-width: 576px) and (max-width: 768px) {
+					  
+			.imageaboutas img{
+				width: 500px;
+			}	
+					}
+					@media (min-width: 768px) and (max-width: 992px) {
+					  
+			.imageaboutas img{
+				width: 350px;
+			}	
+					}
+					@media (min-width: 992px) and (max-width: 1200px) {
+					  
+			.imageaboutas img{
+				width: 500px;
+			}
+					}
+					@media (min-width: 1200px) {
+				  
+			.imageaboutas img{
+				width: 650px;
+			}
+					}
+	</style>
+
+
 	{% endblock css %}
 
 	{% block title %} <title>muckup.uz</title> {% endblock title %}
@@ -16,12 +52,12 @@
 
 		<section class="container pb-5 pt-5">
 			<div class="row pt-5">
-				<div class="col-12 col-sm-12 col-md-10 col-lg-6 col-xl-6 m-auto border">
-					<img src="{% static 'img/product/3.jpg' %}" width="100%">
-				</div>
-				<div class="col-12 col-sm-12 col-md-10 col-lg-6 col-xl-6 m-auto h5 text-justify">
+				
+					
+				<div class="col-12 col-sm-12 col-md-10 col-lg-12 col-xl-12 m-auto h6 text-justify imageaboutas">
+					<img src="{% static 'img/product/3.jpg' %}" class="float-left">
 					<h5 class="font-weight-bold text-dark">Biz haqimizda</h5>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -32,10 +68,9 @@
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pb-5 pl-3 pr-3 pt-3 text-justify h5 text-dark">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -52,7 +87,7 @@
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
 				
 			</div>

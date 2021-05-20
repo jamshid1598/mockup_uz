@@ -14,7 +14,7 @@
 			.swiper-container{
 				width:100%;
 				overflow:hidden;
-				height:70vh;
+				height:80vh;
 			} 
 		
 			.swiper-slide{
@@ -22,12 +22,32 @@
 				overflow:hidden;
 				width: 1920px;
 			}
-			@media (max-width:576px){ 
-				.swiper-container{
-					height:300px;
-				}
-			}
+			@media (max-width:576px) {
+    		  .swiper-container {
+     			   height: 250px;
+     			 }
+   				}
 
+  			@media (min-width: 576px) and (max-width: 768px) {
+      			.swiper-container {
+        			height: 350px;
+     				}
+    			}
+    		@media (min-width: 768px) and (max-width: 992px) {
+      			.swiper-container {
+        			height: 400px;
+     				}
+    			}
+			@media (min-width: 992px) and (max-width: 1200px) {
+      			.swiper-container {
+        			height: 550px;
+     			}
+    		}
+			@media (min-width: 1200px) {
+      			.swiper-container {
+        			height: 600px;
+     			}
+    		}
 			/* Dropdown Button */
 
 			.dropdown {
@@ -63,31 +83,32 @@
 
 	{% block body %}
 
-		<section class="container-fluid pl-0 pr-0" style="margin-top: 80px;">
-			<div class="swiper-container " >
+		<section class="container-fluid pl-0 pr-0" style="margin-top: 70px;">
+			<div class="swiper-container" >
 				<div class="swiper-wrapper" >  
-					<div class="swiper-slide" style="background-image: url(/static/img/header1.jpg); background-repeat: no-repeat;">
+					<div class="swiper-slide" style="background-image: url(/static/img/header1.jpg); background-repeat: no-repeat; background-size: cover;">
 						<div class="carousel-caption text-left "> 
 						</div>
 					</div>
-					<div class="swiper-slide" style="background-image: url(/static/img/sds.jpg); background-repeat: no-repeat;">
+					<div class="swiper-slide" style="background-image: url(/static/img/sds.jpg); background-repeat: no-repeat; background-size: cover;">
 						<div class="carousel-caption text-left"> 
 						</div>
 					</div>
-					<div class="swiper-slide pt-5" style="background-image: url(/static/img/dfd5.jpg); background-repeat: no-repeat;">
-						<div class="carousel-caption text-left pt-5"> 
+					<div class="swiper-slide pt-5" style="background-image: url(/static/img/dfd5.jpg); background-repeat: no-repeat; background-size: cover;">
+						<div class="carousel-caption text-left"> 
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+		
 
 		<section class="container-fluid pt-5">
 			<div class="container pl-0 pr-0">
 				<div class="row border pt-2 pb-2">
-					<div class="col-12 col-12 col-md-3 col-lg-3 col-xl-2 pt-4 pb-1 pl-2 mb-4 text-center">
+					<div class="col-12 col-md-4 col-lg-3 col-xl-2 pt-4 pb-1 pl-2 mb-4 text-center">
 						<div class="dropdown">
-							<a href="#!" class="text-decoration-none h4 pl-1 dropbtn border pt-2 pb-2 pr-2 pl-3">Kategoriya<i class="fa fa-angle-down"></i></a>
+							<a href="#!" class="text-decoration-none h4 dropbtn border p-2">Kategoriya<i class="fa fa-angle-down"></i></a>
 							<div class="dropdown-content" style="z-index: 9999; margin-top: 7px;">
 
 								{% for category in category_list %}
@@ -97,7 +118,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-12 col-md-9 col-lg-9 col-xl-10 pt-3 pb-2 pl-2 text-center">
+					<div class="col-12 col-md-8 col-lg-9 col-xl-10 pt-3 pb-2 pl-2 text-center">
 						<div class="row">
 							
 							{% for category in category_list %}
@@ -127,7 +148,7 @@
 
 						<!-- Search Bar -->
 						<form method="GET" class="search" style="border: 1px solid #ddd; border-radius: 50px; padding-left: 20px; padding-right: 3px;">
-							<input name='q' type="text" placeholder="Izlash ...." required>
+							<input name='q' type="text" class="p-0 m-0" placeholder="Izlash ...." required>
 							<div class="button-src">
 								<button type="submit" class="btn">Izlash</button>
 							</div>
@@ -147,7 +168,6 @@
 						<div class="card rounded profile-card">
 							<div class="card-image">
 								<span class="card-notify-badge ml-3">{{ obj.category }}</span>
-
 								<!-- Price -->
 								{% if obj.free %}
 									<span class="card-notify-year">Free</span>
@@ -170,7 +190,7 @@
 							</div>
 							<div class="card-body text-center">
 								<div class="ad-title m-auto">
-									<h5>{{ obj.name }}</h5>
+									<h6>{{ obj.name|truncatechars:20 }}</h6>
 								</div>
 							</div>
 							<div class="profile-content">
@@ -213,11 +233,13 @@
 
 		<section class="container-fluid sectionBlogImg mt-5">
 			<div class="container">
-				<div class="row p-0">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 p-sm-1 p-md-2 p-lg-5 p-xl-5">
-						<h3 class="bestFont font-weight-bold pt-5 pt-sm-5 pt-lg-2 sectionText1">Barchasini birdaniga oling!</h3>
-						<h5 class="bestFont font-weight-bold pb-4 pt-5 pt-sm-5 pt-lg-2 sectionText2">Siz bu servis orqali tizimda joylashgan barcha mackup fayllarini bir vaqtning o'zida olishingiz mumkin.</h5>
-						<a href="" class="btn bestFont" style="border: 2px solid rgb(68, 68, 68);; color:rgb(68, 68, 68);">Buyurtma bermoq</a>
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4 pb-4">
+						<div class="pt-5 pb-5">
+						<h3 class="bestFont font-weight-bold sectionText1">Barchasini birdaniga oling!</h3>
+						<h5 class="bestFont font-weight-bold  sectionText2 mt-3">Siz bu servis orqali tizimda joylashgan barcha mackup fayllarini bir vaqtning o'zida olishingiz mumkin.</h5>
+						<a href="" class="btn bestFont mt-4" style="border: 2px solid rgb(68, 68, 68);; color:rgb(68, 68, 68);">Buyurtma bermoq</a>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -260,7 +282,7 @@
 								</div>
 								<div class="card-body text-center">
 									<div class="ad-title m-auto">
-										<h5>{{ obj.name }}</h5>
+										<h6>{{ obj.name|truncatechars:20 }}</h6>
 									</div>
 								</div>
 								<div class="profile-content">

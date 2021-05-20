@@ -35,24 +35,27 @@
 											{% endif %}
 
 											{% if object.image %}
-											<img class="img-flu" src="{{ object.imageURL }}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+											<img class="img-flu" src="{{ object.imageURL }}" width="70%" height="50" class="m-auto" alt="Alternate Text" />
 											{% else %}
-											<img class="img-flu" src="{% static 'img/link/default.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+											<img class="img-flu" src="{% static 'img/link/default.png' %}" width="70%" height="50" class="m-auto" alt="Alternate Text" />
 											{% endif %}
 										</div>
-										<h5 class="pt-3">{{ object.name }}</h5>
+										<h6 class="pt-3">{{ object.name|truncatechars:20 }}</h6>
 									</div>
 								</a>
 							</div>
 						{% empty %}
 							<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 								<a href="#" class="text-decoration-none text-dark">
-									<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+									<div class="card border pt-4 pb-0 text-center" style="background-color: #eee;">
 										<div class="card-image">
-											<img class="img-flu" src="{% static 'img/link/empty.jpg' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+											<img class="img-flu" src="{% static 'img/link/empty.jpg' %}" width="70%" height="50px" class="m-auto" alt="Alternate Text" />
 										</div>
-										<h5 class="pt-3">There is nothing ;(</h5>
+										<h6 class="pt-3">There is nothing ;(</h6>
+										
+							
 									</div>
+									
 								</a>
 							</div>
 						{% endfor %}
@@ -161,67 +164,67 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 						<h1 class="font-weight-bold">Icokalar</h1>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://www.flaticon.com/" class="text-decoration-none text-dark" >
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="80%" alt="" class="m-auto">
-								<h5 class="pt-3">Flaticon.uz</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee;">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">Flaticon.uz</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://fonts.google.com/icons" class="text-decoration-none text-dark" >
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">fonts.google.com/icon</h5>
-								<h5 class="pt-3">fonts.google.com/icon</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee;">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">fonts.google.com/icon</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://icons8.com/" class="text-decoration-none text-dark" >
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">icons8.com</h5>
-								<h5 class="pt-3">icons8.com</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee; ">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">icons8.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://fontawesome.com/icons?d=gallery&p=2" class="text-decoration-none text-dark" >
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">fontawesome.com</h5>
-								<h5 class="pt-3">fontawesome.com</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee;">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">fontawesome.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://www.iconfinder.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">iconfinder.com</h5>
-								<h5 class="pt-3">iconfinder.com</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee; ">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">iconfinder.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://freeicons.io/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">freeicons.io</h5>
-								<h5 class="pt-3">freeicons.io</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee;">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">freeicons.io</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://thenounproject.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">thenounproject.com</h5>
-								<h5 class="pt-3">thenounproject.com</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee; ">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">thenounproject.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2 m-auto">
 						<a href="https://materialdesignicons.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center" style="background-color: #eee; height: 120px;">
-								<h5 class="pt-3">materialdesignicons.com</h5>
-								<h5 class="pt-3">materialdesignicons.com</h5>
+							<div class="card border pt-3 pb-3 text-center" style="background-color: #eee; ">
+								<img src="{% static 'img/link/flaticon_negative.svg' %}" width="70%" height="50px" alt="" class="m-auto">
+								<h6 class="pt-3">materialdesignicons.com</h6>
 							</div>
 						</a>
 					</div>
@@ -232,91 +235,91 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 						<h1 class="text-dark font-weight-bold">Rasmlar</h1>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.pexels.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/pexels-logo.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/pexels-logo.png' %}" width="70%" height="50px" class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">pexels.com</h5>
+								<h6 class="pt-3">pexels.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.uhdpaper.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r2.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r2.png' %}" width="70%" height="50px" class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">uhdpaper.com</h5>
+								<h6 class="pt-3">uhdpaper.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.wallpaperup.com/resolution/4k_-_ultra_hd/2" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r3.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r3.png' %}" width="70%" height="50px" class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">unsplash.com</h5>
+								<h6 class="pt-3">unsplash.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.wallpaperup.com/resolution/4k_-_ultra_hd/2" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r4.jpg' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r4.jpg' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">wallpaperup.com</h5>
+								<h6 class="pt-3">wallpaperup.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://wallpapercave.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r5.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r5.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">wallpapercave.com</h5>
+								<h6 class="pt-3">wallpapercave.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.setaswall.com/4k-wallpapers/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r6.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r6.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">setaswall.com</h5>
+								<h6 class="pt-3">setaswall.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://wallpaperaccess.com/4k" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r7.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r7.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">wallpaperaccess.com</h5>
+								<h6 class="pt-3">wallpaperaccess.com</h6>
 							</div>
 						</a>
 					</div>
-					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://wallpaperscraft.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-3 pb-3 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/r8.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/r8.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">wallpaperscraft.com</h5>
+								<h6 class="pt-3">wallpaperscraft.com</h6>
 							</div>
 						</a>
 					</div>
@@ -330,67 +333,67 @@
 					</div>
 					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.fontmirror.com/sketsa-ramadhan" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-4 pb-0 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/f2.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/f2.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">fontmirror.com</h5>
+								<h6 class="pt-3">fontmirror.com</h6>
 							</div>
 						</a>
 					</div>
 					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.myfonts.com/WhatTheFont/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-4 pb-0 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/f1.jpg' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/f1.jpg' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">myfonts.com</h5>
+								<h6 class="pt-3">myfonts.com</h6>
 							</div>
 						</a>
 					</div>
 					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://fonts.google.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-4 pb-0 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/f4.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/f4.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">fonts.google.com</h5>
+								<h6 class="pt-3">fonts.google.com</h6>
 							</div>
 						</a>
 					</div>
 					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.fontsquirrel.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-4 pb-0 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/f5.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/f5.png' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">fontsquirrel.com</h5>
+								<h6 class="pt-3">fontsquirrel.com</h6>
 							</div>
 						</a>
 					</div>
 					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://www.1001fonts.com/" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-4 pb-0 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/f6.svg' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/f6.svg' %}" width="70%" height="50px"  class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">1001fonts.com</h5>
+								<h6 class="pt-3">1001fonts.com</h6>
 							</div>
 						</a>
 					</div>
 					<div class="col-11 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-3 m-auto">
 						<a href="https://lingojam.com/FontChanger" class="text-decoration-none text-dark">
-							<div class="card border pt-4 pb-0 text-center heightH" style="background-color: #eee;">
+							<div class="card border pt-4 pb-0 text-center " style="background-color: #eee;">
 								<div class="card-image">
 									<span class="card-notify-year">Free</span>
-									<img class="img-flu" src="{% static 'img/link/f7.png' %}" width="80%" height="50" class="m-auto" alt="Alternate Text" />
+									<img class="img-flu" src="{% static 'img/link/f7.png' %}" width="70%" height="50px" class="m-auto" alt="Alternate Text" />
 								</div>
-								<h5 class="pt-3">lingojam.com</h5>
+								<h6 class="pt-3">lingojam.com</h6>
 							</div>
 						</a>
 					</div>
