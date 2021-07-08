@@ -92,6 +92,7 @@ class PhoneNumberView(View):
 						confirmation_code=confirmation_code,
 						client_ip=client_ip
 					)
+					
 				if status['status'] == 'waiting':
 					messages.success(request, _(success_msg))
 					return redirect('users:phone-verification', custom_token.key)
