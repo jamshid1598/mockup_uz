@@ -187,5 +187,5 @@ LOGIN_URL = 'users:login'
 # AUTHY_KEY=config('AUTHY_KEY')
 # AUTHY_EMAIL=config('AUTHY_EMAIL')
 
-AUTHY_KEY = 'qY0Sm2qqkTUYnvhCDWNLUdVH9uK1SsvoaY07ObIz'
-AUTHY_EMAIL = 'dovurovjamshid95@gmail.com'
+AUTHY_KEY = ''
+AUTHY_EMAIL = ''
